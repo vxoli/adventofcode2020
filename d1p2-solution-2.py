@@ -7,3 +7,9 @@ for x in data:
 			if x + y + z == 2020: 
 				print(x,y,z, x*y*z)
 				break
+		else:
+			continue
+		break
+	else:
+		continue
+	break
