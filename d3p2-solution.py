@@ -11,7 +11,7 @@ for route in range(len(routes)):
                 trees += 1
         col = (col + routes[route][0]) % (length-1)
     if answer != 0:
-        answer = trees * trees
+        answer = answer * trees
     else:
         answer = trees
 
