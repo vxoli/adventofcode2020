@@ -11,9 +11,9 @@ for route in range(len(routes)):
         if data[row][col] == "#":
                 trees += 1
         col = (col + routes[route][0]) % (length-1)
-        if totaltrees == 0:
-            totaltrees = trees
-        else:
-            totaltrees = totaltrees * trees
+    if totaltrees == 0:
+        totaltrees = trees
+    else:
+        totaltrees = totaltrees * trees
 
 print(totaltrees)
