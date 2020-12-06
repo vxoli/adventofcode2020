@@ -1,3 +1,4 @@
+import re
 f = open('d4-input.txt', 'r')
 data = f.readlines()
 data_str = ""
@@ -36,13 +37,6 @@ for passport in data_str:
 	ecl = passport_info[indx_ecl].split(":")[1]
 	pid = passport_info[indx_pid].split(":")[1]
 	
-	if (byr >= 1920 and byr <= 2002) and (iyr >= 2010 and iyr <= 2020) and (eyr >= 2020 and eyr <= 2030):
+	if (byr >= 1920 and byr <= 2002) and (iyr >= 2010 and iyr <= 2020) and (eyr >= 2020 and eyr <= 2030) and (re.findall("^#[0-9A-Fa-f]{6}", hcl)) and (ecl in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]) and (re.findall('\d{9}', pid)) and ( ((hgt.endswith("cm") and int(hgt[:len(hgt)-2]) >= 150 and int(hgt[:len(hgt)-2]) <= 192)) or ((hgt.endswith("in") and int(hgt[:len(hgt)-2]) >= 59 and int(hgt[:len(hgt)-2]) <= 76)) ):
 		valid += 1
-	
-		
-		# regex: /[0-9A-Fa-f]{6}/g;
-		# if(re.test(inputString))
-		
-	#	if ("byr" in passport) and ("iyr" in passport) and ("eyr" in passport) and ("hgt" in passport) and ("hcl" in passport) and ("ecl" in passport) and ("pid" in passport):
-#		valid = valid + 1
 print(valid)
