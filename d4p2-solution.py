@@ -39,6 +39,10 @@ for passport in data_str:
 	if (byr >= 1920 and byr <= 2002) and (iyr >= 2010 and iyr <= 2020) and (eyr >= 2020 and eyr <= 2030):
 		valid += 1
 	
+		
+		# regex: /[0-9A-Fa-f]{6}/g;
+		# if(re.test(inputString))
+		
 	#	if ("byr" in passport) and ("iyr" in passport) and ("eyr" in passport) and ("hgt" in passport) and ("hcl" in passport) and ("ecl" in passport) and ("pid" in passport):
 #		valid = valid + 1
 print(valid)
