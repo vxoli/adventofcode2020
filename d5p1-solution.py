@@ -1,9 +1,13 @@
 f = open('d5-input.txt', 'r')
 data = f.readlines()
+
+maxseatid=0
+
 for line in data:
     row_code = line[:7]
     seat_code= line[7:]
     seatrow = []
+    seatid = 0
     for s in range(0,128,1):
         seatrow.append(s)
     for s in row_code:
@@ -19,4 +23,6 @@ for line in data:
             seatnum = seatnum[:int(len(seatnum)/2)]
         else:
             seatnum = seatnum[int(len(seatnum)/2):]
-    print(seatrow,seatnum)
+    seatid = seatrow[0] * 8 + seatnum[0]
+    maxseatid = (seatid * (seatid > maxseatid)) + (maxseatid * (seatid <= maxseatid))
+    print(seatrow,seatnum, seatid, maxseatid)
