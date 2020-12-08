@@ -9,17 +9,23 @@ lttrs = []
 for lines in data:
 	group.append(lines)
 	if lines == "\n":
-		for i in range(0,len(group)-1):
-			for idx, letter in enumerate(string.ascii_lowercase):
-				print(idx, letter, i, group[i])
-				if letter in group[i]:
-					lttrs[idx] += 1
-					print(lttrs[idx])
+		data_clean.append(group)
+		group=[]
+for i in data_clean:
+	for j in range(0,len(i)-1):
+		print(i[j])
+		
+#		for i in range(0,len(group)-1):
+#			for idx, letter in enumerate(string.ascii_lowercase):
+#				print(idx, letter, i, group[i])
+#				if letter in group[i]:
+#					lttrs[idx] += 1
+#					print(lttrs[idx])
 #				if letters[idx] == len(group)-1:
 #					count += 1
-		group = []
-		lttrs = []
-print(count)
+#		group = []
+#		lttrs = []
+#print(count)
 # clean data string - get groups into one line each
 #for lines in data:
 #	if lines == "\n":
