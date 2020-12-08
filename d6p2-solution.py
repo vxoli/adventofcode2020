@@ -1,9 +1,11 @@
 import string
+
 f = open('d6-input.txt', 'r')
 data = f.readlines()
 data_clean = []
 lst = ""
 count = 0
+letter_count = 0
 group = []
 lttrs = []
 for lines in data:
@@ -12,8 +14,14 @@ for lines in data:
 		data_clean.append(group)
 		group=[]
 for i in data_clean:
-	for j in range(0,len(i)-1):
-		print(i[j])
+	for letter in string.ascii_lowercase:
+		letter_count = 0
+		for j in range(0,len(i)-1):
+			letter_count += i[j].count(letter)
+			print(lines, i,i[j],letter,letter_count, count)
+		if letter_count == len(i)-1:
+			count += 1
+
 		
 #		for i in range(0,len(group)-1):
 #			for idx, letter in enumerate(string.ascii_lowercase):
@@ -25,7 +33,7 @@ for i in data_clean:
 #					count += 1
 #		group = []
 #		lttrs = []
-#print(count)
+print(count)
 # clean data string - get groups into one line each
 #for lines in data:
 #	if lines == "\n":
