@@ -9,7 +9,7 @@
 -                 mirrored orange bags contain no other bags.
 -                 muted chartreuse bags contain 1 clear olive bag.
 -                     clear olive bags contain no other bags.
-- 
+
 -             mirrored turquoise bags contain 5 drab beige bags, 1 faded plum bag, 4 mirrored orange bags.
 -                 drab beige bags contain 4 pale gold bags.
 -                     pale gold bags contain 5 light lavender bags, 4 mirrored orange bags, 4 muted chartreuse bags.
@@ -33,21 +33,21 @@
 -                                 mirrored orange bags contain no other bags.
 -                         pale red bags contain no other bags.
 -                 mirrored orange bags contain no other bags.
-- 
+
 -             dull lime bags contain 4 mirrored orange bags
 -                 mirrored orange bags contain no other bags.
-- 
+ 
 -             dull beige bags contain no other bags
--         
+         
 -         pale green bags contain 1 pale red bag, 5 dull lavender bags, 4 clear olive bags.
 -             pale red bags contain no other bags.
 -             dull lavender bags contain 5 clear olive bags, 1 mirrored orange bag.
 -                 clear olive bags contain no other bags.
 -                 mirrored orange bags contain no other bags.
 -             clear olive bags contain no other bags.
--         
+         
 -         mirrored orange bags contain no other bags.
--         
+         
 -         dim coral bags contain no other bags.
-- 
+ 
 -     mirrored orange bags contain no other bags.

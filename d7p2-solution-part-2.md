@@ -48,7 +48,7 @@
         
 -         mirrored orange bags contain no other bags.
         
- -        dim coral bags contain no other bags.
+-         dim coral bags contain no other bags.
 
 -     1 mirrored orange bags contain no other bags.
 
