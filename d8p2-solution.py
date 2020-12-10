@@ -1,4 +1,3 @@
-import sys 
 # read data file
 f = open('d8-input.txt', 'r')
 data = f.readlines()
@@ -43,8 +42,6 @@ if data[lineToChange][0:3] == "jmp":
     data[lineToChange] = data[lineToChange].replace("jmp","nop")
 if data[lineToChange][0:3] == "nop":
     data[lineToChange] = data[lineToChange].replace("nop", "jmp")
-if data[lineToChange][0:3] != "jmp" and data[lineToChange] != "nop":
-    sys.exit("no jmp or nop")
 
 # rerun routine
 # reset variables
