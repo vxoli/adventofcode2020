@@ -1,3 +1,4 @@
+import sys 
 # read data file
 f = open('d8-input.txt', 'r')
 data = f.readlines()
@@ -11,7 +12,13 @@ executedCodeLines = []
 lastJmpLine = []
 repeatedLines = False
 
-# loop until a line is repeated
+# TRY:
+# identify all the lines with jmp or nop
+# loop through the list changing each in turn to the other
+# if code executes - flag success
+# if code repeats revert data set and swop next matching command and try again
+
+# while until a line is repeated
 while not(repeatedLines):
     # split input data into components
     command = data[codeLine][0:3]
@@ -28,23 +35,29 @@ while not(repeatedLines):
     if command == "nop":
         codeLine += 1
     if command == "jmp":
-        lastJmpLine.append(codeLine)
         codeLine += int(value)
 
 # change jmp to noc in penultiate jmp executed
-LineToChange = int(lastJmpLine[-2])
-data[LineToChange] = data[LineToChange].replace("jmp","noc")
+lineToChange = int(executedCodeLines[-2])
+if data[lineToChange][0:3] == "jmp":
+    data[lineToChange] = data[lineToChange].replace("jmp","nop")
+if data[lineToChange][0:3] == "nop":
+    data[lineToChange] = data[lineToChange].replace("nop", "jmp")
+if data[lineToChange][0:3] != "jmp" and data[lineToChange] != "nop":
+    sys.exit("no jmp or nop")
 
 # rerun routine
+# reset variables
 codeLine = 0
 accumulator = 0
 executedCodeLines = []
 lastJmpLine = []
 repeatedLines = False
 
-# use for loop to prevent infinite loop
-for codeLine in range(len(data)):
+# while loop till end of code segment reached
+while codeLine <= len(data)-1:
     # split input data into components
+    print(codeLine, data[codeLine], lineToChange, repeatedLines)
     command = data[codeLine][0:3]
     value = data[codeLine][3:]
     # if the line of code has been executed then change the repeatedLines variable
@@ -62,4 +75,4 @@ for codeLine in range(len(data)):
         lastJmpLine.append(codeLine)
         codeLine += int(value)
 
-print(accumulator, LineToChange)
+print(accumulator, lineToChange, codeLine, repeatedLines)
