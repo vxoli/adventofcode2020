@@ -56,5 +56,7 @@ for idx in testLines:
             codeLine += int(value)
         if codeLine > len(data)-1:
             break
+    if (repeatedLines == False) and (codeLine == len(data)):
+        break
 
 print(accumulator, executedCodeLines, codeLine)
