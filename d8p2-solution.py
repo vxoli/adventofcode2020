@@ -59,4 +59,4 @@ for idx in testLines:
     if (repeatedLines == False) and (codeLine == len(data)):
         break
 
-print(accumulator, executedCodeLines, codeLine)
+print(accumulator)
