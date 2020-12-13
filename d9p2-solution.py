@@ -30,18 +30,15 @@ targetIdx = data.index(i)
 for i in range(0,targetIdx):
     sum = 0
     values = []
-    solution = False
     for j in data[i:targetIdx]:
         if i == j:
             continue
         sum += j
         values.append(j)
         if sum == targetNumber:
-            solution = True
             print(targetNumber, sum, values)
+            print(min(values) + max(values))
             break
         if sum > targetNumber:
-            solution == False
             break
-print(min(values) + max(values))
 
