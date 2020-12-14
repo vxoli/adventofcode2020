@@ -10,27 +10,33 @@ data = [16,10,15,5,1,11,7,19,6,12,4]
 #for i in range(0,len(data)):
 #    data[i] = int(data[i].strip("\n"))
 
-	# start solution
+# sort data
+data.sort()
+
+# start solution
 rating = 0
 selectedAdaptors = []
 differences = [0,0,0,0]
+combinations = []
 for i in data:
 	possibleAdaptors = []
 	for j in data:
 		if j in selectedAdaptors:
 			continue
-		if (j - rating) <=3:
+		if (j - data[data.index(j)-1]) <=3:
 			possibleAdaptors.append(j)
+			
+	for j in possibleAdaptors:
+		combinations.append(j)
+		combinations.append(combinations)
+		print(combinations)	
+
+
+		
 	differences[1] += (min(possibleAdaptors) - rating) == 1
 	differences[2] += (min(possibleAdaptors) - rating) == 2
 	differences[3] += (min(possibleAdaptors) - rating) == 3
 	rating += min(possibleAdaptors) - rating
 	selectedAdaptors.append(data[data.index(min(possibleAdaptors))])
-# rating increased by 3
-rating += 3
-# number of differences of 3 increased by 1
-differences[3] += 1
-
-print(rating)
-print(differences)
-print(differences[1] * differences[3])
+	
+print(combinations)
