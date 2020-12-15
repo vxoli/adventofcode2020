@@ -10,39 +10,40 @@ data = [line.rstrip() for line in f.readlines()]
 
 directions = {"E","S","W","N"}
 rotations = {"L","R"}
-forward = {"F","B"}
-
-location = [0,0] #two value list [east/west,north/south]. east positive, west negative/ north positive, south negative
-# set starting facing direction
-compass = 90 # 90 degrees = E, 180 = S, 270 = W, 0/360 = N
+current_posn = {"E":0, "S":0, "W":0, "N":0}
+#dictionary of direction and current value
+# set starting facing direction to east
+# 90 degrees = E, 180 = S, 270 = W, 0/360 = N
+compass = 90 
 
 for line in data:
     instruction = line[0]
     value = int(line[1:])
     print(line,instruction,value)
-    if instruction in forward:
-        if instruction == "F":
-            if compass % 360 == 0:
-                instruction = "N"
-            if compass % 360 == 90:
-                instruction = "E"
-            if compass % 360 == 180:
-                instruction = "S"
-            if compass % 360 == 270:
-                instruction == "W"
+    if instruction == "F":
+        if compass % 360 == 0:
+            instruction = "N"
+        if compass % 360 == 90:
+            instruction = "E"
+        if compass % 360 == 180:
+            instruction = "S"
+        if compass % 360 == 270:
+            instruction == "W"
     if instruction in directions:
         if instruction == "N":
-            location[1] += value
+            current_posn["N"] += value
         if instruction == "S":
-            location[1] -= value
+            current_posn["S"] += value
         if instruction == "E":
-            location[0] += value
+            current_posn["E"] += value
         if instruction == "W":
-            location[0] -= value
+            current_posn["W"] += value
     if instruction in rotations:
         if instruction == "R":
             compass += value
         if instruction == "L":
             compass -= value
-    print(location, compass, compass % 360)
-print(f"Manhatten distance is: {abs(location[0]) + abs(location[1])}")
+    
+print(current_posn["E"], current_posn["W"], current_posn["N"], current_posn["S"])
+location = (current_posn["E"]-current_posn["W"]) + (current_posn["N"]- current_posn["S"]) 
+print(f"Manhatten distance is: {location}")

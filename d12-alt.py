@@ -34,6 +34,6 @@ for line in lines:
         curr_state["W"] += line[1]
     if line[0] == "E":
         curr_state["E"] += line[1]
-        
+print(curr_state["E"],curr_state["W"],curr_state["S"],curr_state["N"])      
 d = curr_state["E"]-curr_state["W"], curr_state["S"]-curr_state["N"]
 print(f"Manhattan Distance of current positions from starting i.e. {curr_state} = {d[0]+d[1]}")
