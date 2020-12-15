@@ -19,9 +19,6 @@ compass = 90
 for line in data:
     instruction = line[0]
     value = int(line[1:])
-    print(line, compass)
-    if instruction == "W" or instruction == "F":
-        print("W or F", line, compass)
     if instruction == "F":
         if compass == 0:
             current_posn["N"] += value
@@ -41,6 +38,5 @@ for line in data:
             compass -= value
             compass = compass % 360
     
-print(current_posn["E"], current_posn["W"], current_posn["S"], current_posn["N"])
 distance = (current_posn["E"]-current_posn["W"]) + (current_posn["S"]- current_posn["N"]) 
 print(f"Manhatten distance is: {distance}")
