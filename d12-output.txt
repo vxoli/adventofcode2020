@@ -1,2 +1,0 @@
-3463 2476 2649 2195
-Manhattan Distance of current positions from starting i.e. {'E': 3463, 'W': 2476, 'N': 2195, 'S': 2649} = 1441
