@@ -13,7 +13,7 @@ def rotate(origin, point, angle):
     return int(round(qx)), int(round(qy))
 
 #test data
-data = ["F10","N3","F7","R90","F11"]
+#data = ["F10","N3","F7","R90","F11"]
 
 # ensure input data in list
 # data = [list(line) for line in data]
@@ -46,6 +46,10 @@ for line in data:
 	if instruction in directions:
 		if instruction in {"W", "S"}:
 			value = -value
+			if instruction == "W":
+				instruction = "E"
+			elif instruction == "S":
+				instruction = "N"
 		waypoint[instruction] += value
 	if instruction in rotations:
 		if instruction == "R":
@@ -54,7 +58,5 @@ for line in data:
 #		compass = compass % 360
 		waypoint['E'], waypoint['N'] = rotate((0, 0), (waypoint['E'], waypoint['N']), math.radians(value))
 	
-	print("Ship: E",shipPosn["E"],"N",shipPosn["N"])
-	print("Waypoint: E",waypoint["E"],"N",waypoint["N"])
 distance = abs(shipPosn["E"]) + abs(shipPosn["N"])
 print(f"Manhatten distance is: {distance}")
