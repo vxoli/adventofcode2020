@@ -56,5 +56,5 @@ for line in data:
 	
 	print("Ship: E",shipPosn["E"],"N",shipPosn["N"])
 	print("Waypoint: E",waypoint["E"],"N",waypoint["N"])
-#distance = (shipPosn["E"]-shipPosn["W"]) + (shipPosn["S"]- shipPosn["N"]) 
-#print(f"Manhatten distance is: {distance}")
+distance = abs(shipPosn["E"]) + abs(shipPosn["N"])
+print(f"Manhatten distance is: {distance}")
