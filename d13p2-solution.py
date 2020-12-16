@@ -2,7 +2,7 @@
 f = open('d13-input.txt', 'r')
 data = [line.rstrip() for line in f.readlines()]
 # Test data
-data = ["939","7,13,x,x,59,x,31,19"]
+# data = ["939","7,13,x,x,59,x,31,19"]
 
 # splice timestamp from data
 timestamp = int(data[0])
@@ -18,4 +18,4 @@ for b in times[1:]:
 		timestamp += r
 	r *= b
 
-print(f"answer = {int(buscodes[0])+timestamp}")
+print(f"answer = {timestamp}")
