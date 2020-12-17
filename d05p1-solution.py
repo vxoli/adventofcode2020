@@ -1,4 +1,4 @@
-f = open('d5-input.txt', 'r')
+f = open('d05-input.txt', 'r')
 data = f.readlines()
 
 maxseatid=0

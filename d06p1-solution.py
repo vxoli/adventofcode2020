@@ -1,5 +1,5 @@
 import string
-f = open('d6-input.txt', 'r')
+f = open('d06-input.txt', 'r')
 data = f.readlines()
 data_clean = []
 lst = ""

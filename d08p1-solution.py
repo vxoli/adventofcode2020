@@ -1,5 +1,5 @@
 # read data file
-f = open('d8-input.txt', 'r')
+f = open('d08-input.txt', 'r')
 data = f.readlines()
 # test data
 # data = ["nop +0", "acc +1", "jmp +4", "acc +3", "jmp -3", "acc -99", "acc +1", "jmp -4", "acc +6"]

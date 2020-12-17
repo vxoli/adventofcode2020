@@ -1,5 +1,5 @@
 import re
-f = open('d4-input.txt', 'r')
+f = open('d04-input.txt', 'r')
 data = f.readlines()
 data_str = ""
 valid = 0
