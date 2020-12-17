@@ -18,7 +18,6 @@ for line in data:
 # use list of memory addresses to define dictionary
 memory = {i:0 for i in memoryAddresses}
 
-print(memory)
 for line in data:
     if line[:4] == "mask":
         bitmask = line[7:]
@@ -35,20 +34,14 @@ for line in data:
             if digit == "X":
                 newValueBin += valueBin[idx]
             if digit == "1":
-                print(valueBin[idx], digit)
                 newValueBin += "1"
             if digit == "0":
-                print(valueBin[idx], digit)
                 newValueBin += "0"
-        print(bitmask)
-        print(valueBin, int(valueBin,2))
-        print(newValueBin, int(newValueBin,2))
         # store newValueBin in memory slot memAddr
         memory[memAddr] = int(newValueBin,2)
 # sum all non-zero value in memory{}
 total = 0
 for i in memory:
     if memory[i] >0:
-        print(memory[i])
         total += memory[i]
 print(total)
