@@ -2,7 +2,7 @@
 f = open('d14-input.txt', 'r')
 data = [line.rstrip() for line in f.readlines()]
 # Test data
-data = ["mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X","mem[8] = 11","mem[7] = 101", "mem[8] = 0"]
+# data = ["mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X","mem[8] = 11","mem[7] = 101", "mem[8] = 0"]
 
 # define dictionary to store memory addresses
 memoryAddresses = []
@@ -44,4 +44,4 @@ total = 0
 for i in memory:
     if memory[i] >0:
         total += memory[i]
-print(total)
+print(f"sum of values = {total}")
