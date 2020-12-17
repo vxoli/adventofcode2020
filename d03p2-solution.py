@@ -1,4 +1,4 @@
-f = open('d3-input.txt', 'r')
+f = open('d03-input.txt', 'r')
 data = f.readlines()
 length = len(data[0])
 routes = [(1,1),(3,1),(5,1),(7,1),(1,2)]

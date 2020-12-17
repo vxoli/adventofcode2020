@@ -1,4 +1,4 @@
-f = open('d3-input.txt', 'r')
+f = open('d03-input.txt', 'r')
 data = f.readlines()
 trees = 0
 col = 0
