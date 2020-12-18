@@ -6,19 +6,33 @@ data = [0,3,6]
 
 spokenNumbers = {} #{i:0 for i in data}
 turn = 0
-numberSpoken = data[0]
+spoken= data[0]
 
 # loop through starting numbers
-while turn < 2020:
-    turn += 1
-    if turn <= 3:
-        spokenNumber = data[turn-1]
-        print(spokenNumber)
-    if spokenNumber in spokenNumbers:
-        spokenNumbers[spokenNumber] = turn - spokenNumbers[spokenNumber]
-        data.append(spokenNumber)
-    if not(spokenNumber in spokenNumbers):
-        spokenNumbers.update({spokenNumber:turn})
-        data.append(spokenNumber)
+for idx, number in enumerate(data):
+	turn += 1
+	spoken = number
+	# if in the dictionary, the difference in turns since last spoken becomes new spoken and update the turn spoken in dictionary
+	if spoken in spokenNumbers.keys():
+		spokenNumbers[spoken]=turn - spokenNumbers[spoken]
+	if not(spoken in spokenNumbers.keys()):
+		spokenNumbers[spoken]=turn
+		spoken = 0
 
-print(data, spokenNumbers)
+# loop to target value
+while turn < 10:
+	turn += 1
+	print(turn,spoken, spokenNumbers)
+
+	# if in the dictionary, the difference in turns since last spoken becomes new spoken and update the turn spoken in dictionary
+	if spoken in spokenNumbers.keys():
+		nextspoken = turn - spokenNumbers[spoken]
+		spokenNumbers[spoken]=turn
+
+	else:
+		spokenNumbers[spoken]=turn
+		nextspoken=0
+	spoken = nextspoken
+
+
+	
