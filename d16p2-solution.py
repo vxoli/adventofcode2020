@@ -52,17 +52,39 @@ for ticket in nearbyTickets:
             inValid.add(ticket)
 # remove inValid tickets and generaate list of validTickets
 validTickets = set(nearbyTickets).difference(inValid)
-# using valid tickets loop though
+
+# got some help here:
+# code below adapted from q-viper
 # a dictionary to hold possible fields for each col
 valid_tickets = list(validTickets)
 possibleFields = {i: set(fields.keys()) for i in range(len(validTickets))}
 for ticket in validTickets:
     for i, value in enumerate(ticket.split(",")):
-        print(i,value)
-        for field in fields:
+        for keys in fields:
+            #validParaams is intersection of set on lower-range values and set of upper-range values
+            validParams = set(range(fields[keys][0],fields[keys][1]+1)) | set(range(fields[keys][2],fields[keys][3]+1))
             possible = False
-            if value in fields[field]: # have to adapt fields[field] to work with my code to give a range of mix to max.
+            if int(value) in validParams:
                 possible = True
             if not possible:
-                possibleFields[i].discard(field)
-print(possibleFields)
+                possibleFields[i].discard(keys)
+# remove repeated fields
+## having problem with this segment of code - returns StopIteration error at line 73
+## unable to trace source - something to do witht he way I've setup the lists???
+## used code from https://github.com/jakobsen/advent-of-code-2020/blob/master/16.py
+## to help check and develop my code - still stuck here...
+## answer calculated as 650080463519
+for i in sorted(possibleFields, key=lambda k: len(possibleFields[k])):
+    thisField = next(iter(possibleFields[i]))
+    for j in possibleFields:
+        if j != i:
+            possibleFields[j].discard(thisField)
+            
+myTicket = [int(x) for x in lines[22].split(",")]
+ans = 1
+for i in possibleFields:
+    if possibleFields[i].pop().startswith("departure"):
+        ans *= myTicket[i]
+
+print("Part 2:", ans)
+
