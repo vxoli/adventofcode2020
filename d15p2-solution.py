@@ -20,15 +20,18 @@ for idx, number in enumerate(data):
 		spoken = 0
 
 # loop to target value
-while turn < 2020:
+# part 1 target = 2020, part 2 target = 3e7
+target = 3e7
+while turn < target:
 	turn += 1
-	print(turn, spoken)
+	if turn == target:
+		print(turn, spoken)
 
 	# if in the dictionary, the difference in turns since last spoken becomes new spoken and update the turn spoken in dictionary
 	if spoken in spokenNumbers.keys():
 		nextspoken = turn - spokenNumbers[spoken]
 		spokenNumbers[spoken]=turn
-
+	# if not in dictionary, add to dictionary, give value of the turn added and next number to speak becomes zero
 	else:
 		spokenNumbers[spoken]=turn
 		nextspoken=0
