@@ -2,7 +2,7 @@
 data = [0,5,4,1,10,14,7]
 
 # test data
-data = [0,3,6]
+# data = [0,3,6]
 
 spokenNumbers = {} #{i:0 for i in data}
 turn = 0
@@ -20,9 +20,9 @@ for idx, number in enumerate(data):
 		spoken = 0
 
 # loop to target value
-while turn < 10:
+while turn < 2020:
 	turn += 1
-	print(turn,spoken, spokenNumbers)
+	print(turn, spoken)
 
 	# if in the dictionary, the difference in turns since last spoken becomes new spoken and update the turn spoken in dictionary
 	if spoken in spokenNumbers.keys():
