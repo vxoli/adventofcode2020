@@ -61,7 +61,7 @@ for ticket in validTickets:
         print(i,value)
         for field in fields:
             possible = False
-            if value in fields[field]: # have to adapt fields[field] to work with my code.
+            if value in fields[field]: # have to adapt fields[field] to work with my code to give a range of mix to max.
                 possible = True
             if not possible:
                 possibleFields[i].discard(field)
