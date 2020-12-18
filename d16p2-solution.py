@@ -71,7 +71,8 @@ for ticket in validTickets:
 # remove repeated fields
 ## having problem with this segment of code - returns StopIteration error at line 73
 ## unable to trace source - something to do witht he way I've setup the lists???
-## used code from https://github.com/jakobsen/advent-of-code-2020/blob/master/16.py
+## used code from https://github.com/q-viper/Adevent-Of-Code-2020/blob/master/Advent%20of%20code.ipynb
+## and https://github.com/jakobsen/advent-of-code-2020/blob/master/16.py
 ## to help check and develop my code - still stuck here...
 ## answer calculated as 650080463519
 for i in sorted(possibleFields, key=lambda k: len(possibleFields[k])):
