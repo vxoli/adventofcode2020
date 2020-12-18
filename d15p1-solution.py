@@ -22,7 +22,7 @@ for idx, number in enumerate(data):
 # loop to target value
 while turn < 2020:
 	turn += 1
-	print(turn, spoken)
+	if turn == 2020: print(turn, spoken)
 
 	# if in the dictionary, the difference in turns since last spoken becomes new spoken and update the turn spoken in dictionary
 	if spoken in spokenNumbers.keys():
