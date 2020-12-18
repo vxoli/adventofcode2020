@@ -2,7 +2,7 @@
 f = open('d16-input.txt', 'r')
 data = [line.rstrip() for line in f.readlines()]
 # Test data
-data = ["class: 1-3 or 5-7","row: 6-11 or 33-44","seat: 13-40 or 45-50","your ticket:","7,1,14","","nearby tickets:","7,3,47","40,4,50","55,2,20","38,6,12"]
+# data = ["class: 1-3 or 5-7","row: 6-11 or 33-44","seat: 13-40 or 45-50","your ticket:","7,1,14","","nearby tickets:","7,3,47","40,4,50","55,2,20","38,6,12"]
 
 # Split data into areas - fields, my ticket, nearby tickets
 fields, myTicket, nearbyTickets = {}, [], []
@@ -23,7 +23,6 @@ for idx, line in enumerate(data):
     max_max = int(fields[line.split(": ")[0]][1].split("-")[1])
     # redefine the dictionary entry with new min/max values
     fields[line.split(": ")[0]] = (min_min, min_max, max_min, max_max)
-
 # split myTicket data into list
 for line in data[idx+1:]:
     if line == "": continue
@@ -43,7 +42,7 @@ validParams = set() # define empty set
 ticketScanningErrorRate = 0
 # add paramteters to set as union of sets of values from fields
 for keys in fields:
-    for idx in range(0,len(fields),2):
+    for idx in range(0,len(fields[keys])-1,2):
         validParams = validParams | set(range(fields[keys][idx],fields[keys][idx+1]+1))
 # loop though nearbyTickets and sum values not in parameters
 for line in nearbyTickets:
