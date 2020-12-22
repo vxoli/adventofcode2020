@@ -8,7 +8,7 @@ p1 = card_dict["Player 1"]
 p2 = card_dict["Player 2"]
 
 i=0
-while len(p1) != 0 and len(p2) != 0:
+while len(p1) != 0 or len(p2) != 0:
 	# play the top card
 	card1 = p1[0]
 	card2 = p2[0]
@@ -31,4 +31,3 @@ if len(p1) == 0: # player 2 wins
 else: # player 1 wins
 	winnerSum = sum([((i+1)*j) for i,j in enumerate(p1[::-1])])
 print(winnerSum)
-	
