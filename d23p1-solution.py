@@ -32,17 +32,17 @@ for turn in range (0,5):
         destinationCup = ((destinationCup >= min(cups)) * destinationCup) + ((destinationCup < min(cups)) * (max(cups)))
     print("destination cup corrected", destinationCup)
     # The crab places the cups it just picked up so that they are immediately clockwise of the destination cup. They keep the same order as when they were picked up.
-    if cups.index(destinationCup) == 0:
-        for i in range(len(pickupCups)):
-        # first element becomes last
+    for i in range(len(pickupCups)):
+        # delist the elements of pickupCups and add back to cups
+        print(i, i+len(pickupCups), pickupCups[i],cups.index(destinationCup)+1+i,cups.index(destinationCup) )
+        if cups.index(destinationCup) == 0:
+            # first element becomes last
             cups.append(cups[0])
             cups.pop(0)
-        #cup added to front
+            #cup added to front
             cups.insert(0, pickupCups[i])
         else:
-            for i in range(len(pickupCups)):
-        # delist the elements of pickupCups and add back to cups
-                cups.insert(cups.index(destinationCup)+1+i, pickupCups[i])
+            cups.insert(cups.index(destinationCup)+1+i, pickupCups[i])
     # The crab selects a new current cup: the cup which is immediately clockwise of the current cup.
     currentCup = cups[(cups.index(currentCup)+1) % numberCups]
     print(currentCup, cups)
