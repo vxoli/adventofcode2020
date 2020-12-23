@@ -36,11 +36,17 @@ for turn in range (0,5):
         # delist the elements of pickupCups and add back to cups
         print(i, i+len(pickupCups), pickupCups[i],cups.index(destinationCup)+1+i,cups.index(destinationCup) )
         if cups.index(destinationCup) == 0:
+            # store index of destinationCup as will change as string chages
+            destinationCupIndex = 0
             # first element becomes last
+            print(cups)
             cups.append(cups[0])
+            print(cups)
             cups.pop(0)
+            print(cups)
             #cup added to front
             cups.insert(0, pickupCups[i])
+            print(cups)
         else:
             cups.insert(cups.index(destinationCup)+1+i, pickupCups[i])
     # The crab selects a new current cup: the cup which is immediately clockwise of the current cup.
