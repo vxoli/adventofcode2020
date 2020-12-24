@@ -13,7 +13,8 @@ data = [int(i) for i in "389125467"]
 cups = data
 numberCups = len(cups)
 currentCup = cups[0]
-for turn in range (0,4):
+totalTurns = 10
+for turn in range(totalTurns):
 	print("Turn: ",turn+1)
 	#The crab picks up the three cups that are immediately clockwise of the current cup.
 	pickupCups = [cups[(cups.index(currentCup)+1) % numberCups],cups[(cups.index(currentCup)+2) % numberCups],cups[(cups.index(currentCup)+3) % numberCups]]
