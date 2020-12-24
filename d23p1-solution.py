@@ -35,27 +35,27 @@ for turn in range (0,4):
 	# store index of destinationCup as will change as string chages
 	destinationCupIndex = cups.index(destinationCup)
 	currentCupIndex = cups.index(currentCup)
-	for i in range(len(pickupCups)):
-		print(i, destinationCupIndex, currentCupIndex)
-		## New Approach
-		## add items back in, if to left of current take front two or three and wrap to end
-		## if to right nothing needs to be done
-		
-		#if destination to right of the current cup, add back pickedCups to right of destination cup
-		if destinationCupIndex > currentCupIndex:
-			# delist the elements of pickupCups and add back to cups
-			cups.insert(destinationCupIndex+1+i, pickupCups[i])
-		
-		# if destination cup to the left of current cup, add back and wrap string from left the end of the list
-		if destinationCupIndex < currentCupIndex:
-			# first element becomes last
-			print(cups,cups[0],cups[1:])
-			cups.append(cups[0])
-			cups = cups[1:]
-			print(cups)
-			cups.insert(destinationCupIndex+1+i, pickupCups[i])
-			print(cups)
+
 	
+	# add back pickedCups to right of destination cup
+	for i in range(len(pickupCups)):
+		# delist the elements of pickupCups and add back to cups
+			cups.insert(destinationCupIndex+1+i, pickupCups[i])
+	# if destination to right of the current cup nothing further needs to be done
+
+	# if destination cup to the left of current cup, add back and wrap string from left the end of the list
+	if destinationCupIndex < currentCupIndex:
+		# left hand 3 elements wrapped to end
+		wrap = cups[:3]
+		# remove left-hand three elements
+		cups.pop(0)
+		cups.pop(0)
+		cups.pop(0)
+		# add cut elements to right-hand end of list
+		# extend iterates over the list and appends as elements not a list as append does.
+		cups.extend(wrap)
+			
+			
 	# The crab selects a new current cup: the cup which is immediately clockwise of the current cup.
 	currentCup = cups[(cups.index(currentCup)+1) % numberCups]
 	print(currentCup, cups)
