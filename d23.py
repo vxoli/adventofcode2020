@@ -59,7 +59,7 @@ ans.pop(0)
 print('Part 1:', ''.join(map(str, ans)))
 
 
-data = list('253149867')
+data = list('219347865')
 cups = {}
 
 last_cup = Cup(data.pop(0))
