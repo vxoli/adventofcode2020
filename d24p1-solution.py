@@ -5,6 +5,11 @@ data = f.read().split("\n")
 # test data
 data = ["sesenwnenenewseeswwswswwnenewsewsw", "neeenesenwnwwswnenewnwwsewnenwseswesw", "seswneswswsenwwnwse", "nwnwneseeswswnenewneswwnewseswneseene", "swweswneswnenwsewnwneneseenw", "eesenwseswswnenwswnwnwsewwnwsene", "sewnenenenesenwsewnenwwwse", "wenwwweseeeweswwwnwwe", "wsweesenenewnwwnwsenewsenwwsesesenwne", "neeswseenwwswnwswswnw", "nenwswwsewswnenenewsenwsenwnesesenew", "enewnwewneswsewnwswenweswnenwsenwsw", "sweneswneswneneenwnewenewwneswswnese", "swwesenesewenwneswnwwneseswwne", "enesenwswwswneneswsenwnewswseenwsese", "wnwnesenesenenwwnenwsewesewsesesew", "nenewswnwewswnenesenwnesewesw", "eneswnwswnwsenenwnwnwwseeswneewsenese", "neswnwewnwnwseenwseesewsenwsweewe", "wseweeenwnesenwwwswnew"]
 
+# define centre {x,y}
+centrePoint = {0,0}
+# tiles will be set of {x,y, colour} co-ordinates of tiles and color (b or w)
+tiles = set()
+
 # define movements ito {x,y}
 def move_e(x,y):
 	x += 1
@@ -34,13 +39,8 @@ def move_ne(x,y):
 	y += 1
 	return([x,y])
 
-# define centre {x,y}
-centrePoint = {0,0}
-# tiles will be set of {x,y, colour} co-ordinates of tiles and color (b or w)
-tiles = []
-
 	# read each line of the data
-for line in data[0:3]:
+for line in data[0:1]:
 	print(len(line), line)
 	# split line into movements
 	charCount = 0
@@ -70,28 +70,16 @@ for line in data[0:3]:
 			location = move_ne(location[0],location[1])
 		if move == 'nw':
 			location = move_nw(location[0],location[1])
-	
-	# store location in dict and add blank for colour
-	locationSet = [location[0], location[1], ""]
-	print(locationSet)
-	if len(tiles) == 0:
-		tiles.append(locationSet)
-		tiles[0][2] = "b"
-	# if the locationSet in tiles list - flip the colour
-	for i, tile in enumerate(tiles):
-		if tile in tiles:
-			if tiles[i][2] == "b":
-				tiles[i][2] == "w"
-			else:
-				tiles[i][2] == "b"
-		else:
-			tiles.append(locationSet)
-			tiles[0][2] = "b"
-	# else add locationset to dictionary and set colour to black (flipped white tile)
-	
-	
-	print(tiles)
-
-
+			
 		# store location and flip the tile
+		location.append("b")
+		print(location)
+		tiles.update(location)
+		print(tiles)
 		#check if entry in set of tiles and locations
+		#if set(location) in tiles:
+			# if in set of tiles then flip the colour of the tile
+		#	print("in tiles")
+		#else:
+			# add to set of tiles and flip colour from white to black
+		#	tiles.add([location[0],location[1],"W"])
