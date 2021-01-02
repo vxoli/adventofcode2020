@@ -1,6 +1,6 @@
 my_input = """
-12578151
-5051300
+15335876
+15086442
 """
 
 test_input = """
@@ -19,18 +19,18 @@ card_loopsize = 0
 
 temp = 1
 while temp != card_pkey:
-    temp = (temp * 7) % 20201227
-    card_loopsize += 1
+	temp = (temp * 7) % 20201227
+	card_loopsize += 1
 print(f"Card's Loopsize: {card_loopsize}")
 
 door_loopsize = 0
 temp = 1
 while temp != pk_door:
-    temp = (temp * 7) % 20201227
-    door_loopsize += 1
+	temp = (temp * 7) % 20201227
+	door_loopsize += 1
 print(f"Door's Loopsize: {door_loopsize}")
 
 temp = 1
 for i in range(loopsize_card):
-    temp = temp * door_pkey % 20201227
+	temp = temp * door_pkey % 20201227
 print(f'Part 1: {temp} (card -> door)')
