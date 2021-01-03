@@ -25,12 +25,12 @@ print(f"Card's Loopsize: {card_loopsize}")
 
 door_loopsize = 0
 temp = 1
-while temp != pk_door:
+while temp != door_pkey:
 	temp = (temp * 7) % 20201227
 	door_loopsize += 1
 print(f"Door's Loopsize: {door_loopsize}")
 
 temp = 1
-for i in range(loopsize_card):
+for i in range(card_loopsize):
 	temp = temp * door_pkey % 20201227
 print(f'Part 1: {temp} (card -> door)')
