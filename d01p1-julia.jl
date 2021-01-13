@@ -6,7 +6,7 @@ println("Part 1:")
 for x in data
 	for y in data
 		if (x + y) == 2020
-            println(x, " ", y, " ",(x*y))
+            println(x, "\t", y, "\t",(x*y))
         end
     end
 end
@@ -15,7 +15,7 @@ for x in data
 	for y in data
         for z in data
         	if (x + y + z) == 2020
-                println(x, " ", y, " ", " ", z," ",(x*y*z))
+                println(x, "\t", y, "\t", z,"\t",(x*y*z))
             end
         end
     end
