@@ -1,11 +1,22 @@
+using DelimitedFiles
 f = open("d01p1-input.txt")
-data = read(f, String)
+data = readdlm(f, '\t', Int, '\n')
 close(f)
-# map(x->parse(Float64,x),data)
+println("Part 1:")
 for x in data
 	for y in data
-		#if parse(Int64,x) + parse(Int64, y) == 2020: print(x,y)
-        print(x,y)
+		if (x + y) == 2020
+            println(x, " ", y, " ",(x*y))
+        end
+    end
+end
+println("Part2:")
+for x in data
+	for y in data
+        for z in data
+        	if (x + y + z) == 2020
+                println(x, " ", y, " ", " ", z," ",(x*y*z))
+            end
         end
     end
 end
