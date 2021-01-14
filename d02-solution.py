@@ -1,4 +1,4 @@
-f = open('d2-input.txt', 'r')
+f = open('d02-input.txt', 'r')
 data = f.readlines()
 data = [x.strip().split() for x in data]
 valid = 0
