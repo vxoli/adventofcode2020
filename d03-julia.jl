@@ -5,12 +5,11 @@ data = readdlm(f, '\t', String, '\n')
 close(f)
 global trees = 0
 global col = 1
-global line_length = length(data[1])
+global line_length = length(data[1])-1
 for row in 1:length(data)
-    println(row, " ", col)
-#    if data[row][col] == "#"
-#        trees += 1
-#    end
-    col = (col + 3) % (line_length+1)
+    if data[row][col] == '#'
+        global trees += 1
+    end
+    global col = (col + 3) % (line_length)
 end
-print(trees)
+print("Trees encountered: $trees")
