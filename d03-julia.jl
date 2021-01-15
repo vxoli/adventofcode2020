@@ -4,7 +4,6 @@ f = open("d03-input.txt")
 data = readdlm(f, '\t', String, '\n')
 close(f)
 global trees = 0
-col = Int
 global col = 1
 global line_length = length(data[1])
 for row in 1:length(data)
