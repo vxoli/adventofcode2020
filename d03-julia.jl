@@ -12,4 +12,4 @@ for row in 1:length(data)
     end
     global col = (col + 2) % (line_length)+1 # julia doesnt allow zero index - this calulates across 2 mod line_length then adds one to make total across 3
 end
-print("Trees encountered: $trees")
+print("Part 1: Trees encountered= $trees")
