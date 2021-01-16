@@ -9,30 +9,30 @@ for i in 1:length(data)
     global data[i] = replace(data[i], "\n" => " ")
 end
 
-valid_part_1 = 0
-valid_part_2 = 0
-for passport in data
-    # the following test check for valid passports in part 1, and is used as first test for part 2
+validpart1 = 0
+validpart2 = 0
+for (index, passport) in enumerate(data)
+    # the following test check for valid passports in part 1, and is first test for part 2
     if occursin("byr", passport) & occursin("iyr", passport) & occursin("eyr", passport) & occursin("hgt", passport) & occursin("hcl", passport) & occursin("ecl", passport) & occursin("pid", passport)
-        global valid_part_1 = valid_part_1 + 1
+        global validpart1 = validpart1 + 1
 
         # start of checks for part 2
         # determine birth year byr
-        byr = parse(Int, split(split(split(data[6], "byr")[2], ":")[2], " ")[1])
+        byr = parse(Int, split(split(split(passport, "byr")[2], ":")[2], " ")[1])
         # determine issue year iyr
-        iyr = parse(Int, split(split(split(data[6], "iyr")[2], ":")[2], " ")[1])
+        iyr = parse(Int, split(split(split(passport, "iyr")[2], ":")[2], " ")[1])
         # determine expiration year eyr 
-        eyr = parse(Int, split(split(split(data[6], "eyr")[2], ":")[2], " ")[1])
+        eyr = parse(Int, split(split(split(passport, "eyr")[2], ":")[2], " ")[1])
         # determine height hgt & units
-        hgt_length = length(split(split(split(data[6], "hgt")[2], ":")[2], " ")[1])
-        hgt = parse(Int, split(split(split(data[6], "hgt")[2], ":")[2], " ")[1][1:hgt_length-2])
-        hgt_unit = split(split(split(data[6], "hgt")[2], ":")[2], " ")[1][hgt_length-1:hgt_length]
+        hgt_length = length(split(split(split(passport, "hgt")[2], ":")[2], " ")[1])
+        hgt = parse(Int, split(split(split(passport, "hgt")[2], ":")[2], " ")[1][1:hgt_length-2])
+        hgt_unit = split(split(split(passport, "hgt")[2], ":")[2], " ")[1][hgt_length-1:hgt_length]
         # determine hair colour hcl
-        hcl = split(split(split(data[6], "hcl")[2], ":")[2], " ")[1]
+        hcl = split(split(split(passport, "hcl")[2], ":")[2], " ")[1]
         # determine eye colour ecl
-        ecl = split(split(split(data[6], "ecl")[2], ":")[2], " ")[1]
+        ecl = split(split(split(passport, "ecl")[2], ":")[2], " ")[1]
         # determine passport id pid
-        pid = split(split(split(data[6], "pid")[2], ":")[2], " ")[1]
+        pid = split(split(split(passport, "pid")[2], ":")[2], " ")[1]
         # ignore cid
 
         # check if parameters in range
@@ -46,13 +46,20 @@ for passport in data
         # ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
         # pid (Passport ID) - a nine-digit number, including leading zeroes.
         # cid (Country ID) - ignored, missing or not.
-        if ((byr >= 1920) & (byr <= 2002)) & ((iyr >= 2010 & iyr <= 2020)) & ((eyr >= 2020) & (eyr <= 2030)) & occursin(r"^#[0-9A-Fa-f]{6}$", hcl) & occursin(r"amb|blu|brn|gry|grn|hzl|oth", ecl) & occursin(r"\d{9}", pid) & (((hgt_unit == "cm") & (hgt >= 150) & (hgt <= 193)) | ((hgt_unit == "in") & (hgt >=59) & (hgt <= 76)))
-            global valid_part_2 = valid_part_2 + 1
-        end
+        if ((byr >= 1920) & (byr <= 2002)) & 
+            ((iyr >= 2010 & iyr <= 2020)) & 
+            ((eyr >= 2020) & (eyr <= 2030)) & 
+            occursin(r"^#[0-9A-Fa-f]{6}$", hcl) & 
+            occursin(r"amb|blu|brn|gry|grn|hzl|oth", ecl) & 
+            occursin(r"\d{9}", pid) & 
+            (((hgt_unit == "cm") & (hgt >= 150) & (hgt <= 193)) | ((hgt_unit == "in") & (hgt >=59) & (hgt <= 76)))
+            println(index, " ", passport)
+            global validpart2 = validpart2 + 1
+        end # if ((byr >= ....))
 
     end #if occursin
 end #for passport in data
 
-println("Part 1: Valid passports = $valid_part_1")
-println("Part 2: Valid passports = $valid_part_2")
+println("Part 1: Valid passports = $validpart1")
+println("Part 2: Valid passports = $validpart2")
 
