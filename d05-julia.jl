@@ -8,7 +8,7 @@ maxseatid=0
 for line in data
     # split the ticketdata into row and seat info
     row_code = line[1:7]
-    seat_code= line[8:length(line)]
+    seat_code= line[8:end]
     seatrow = []
     seatid = 0
     for s in [1:128]
@@ -18,7 +18,7 @@ for line in data
         if s == "F"
             seatrow = seatrow[1:length(seatrow)/2]
         else
-            seatrow = seatrow[(length(seatrow)/2)+1:length(seatrow)]
+            seatrow = seatrow[(length(seatrow)/2)+1:end]
         end
     end
     seatnum = []
@@ -29,7 +29,7 @@ for line in data
         if s == "L"
             seatnum = seatnum[1:length(seatnum)/2]
         else
-            seatnum = seatnum[(length(seatnum)/2)+1:length(seatnum)]
+            seatnum = seatnum[(length(seatnum)/2)+1:end]
         end
     end
 end
