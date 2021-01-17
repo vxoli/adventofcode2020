@@ -25,8 +25,10 @@ for (index, passport) in enumerate(data)
         eyr = parse(Int, split(split(split(passport, "eyr")[2], ":")[2], " ")[1])
         # determine height hgt & units
         hgt_length = length(split(split(split(passport, "hgt")[2], ":")[2], " ")[1])
-        hgt = parse(Int, split(split(split(passport, "hgt")[2], ":")[2], " ")[1][1:hgt_length-2])
+        # check units included
         hgt_unit = split(split(split(passport, "hgt")[2], ":")[2], " ")[1][hgt_length-1:hgt_length]
+        if !occursin(r"cm|in", hgt_unit) continue end
+        hgt = parse(Int, split(split(split(passport, "hgt")[2], ":")[2], " ")[1][1:hgt_length-2])
         # determine hair colour hcl
         hcl = split(split(split(passport, "hcl")[2], ":")[2], " ")[1]
         # determine eye colour ecl
@@ -53,7 +55,6 @@ for (index, passport) in enumerate(data)
             occursin(r"amb|blu|brn|gry|grn|hzl|oth", ecl) & 
             occursin(r"\d{9}", pid) & 
             (((hgt_unit == "cm") & (hgt >= 150) & (hgt <= 193)) | ((hgt_unit == "in") & (hgt >=59) & (hgt <= 76)))
-            println(index, " ", passport)
             global validpart2 = validpart2 + 1
         end # if ((byr >= ....))
 
