@@ -11,7 +11,7 @@ for line in data
     seat_code= line[8:length(line)]
     seatrow = []
     seatid = 0
-    for s in range(0,128,1)
+    for s in [1:128]
         seatrow.append(s)
     end
     for s in row_code
@@ -22,7 +22,7 @@ for line in data
         end
     end
     seatnum = []
-    for s in range(0,8,1)
+    for s in range(1,8,1)
         seatnum.append(s)
     end
     for s in seat_code
