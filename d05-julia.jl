@@ -67,7 +67,7 @@ for s in 1:length(seatid)-1
     if Integer(seatid[s+1] - seatid[s]) == 1
         continue
     else
-        println("Part 2: seat id is: ", Integer((seatid[s+1]+seatid[s]) / 2))
+        println("Part 2: seat id is: $(Integer((seatid[s+1]+seatid[s]) / 2))")
 	end
 end
 
