@@ -1,11 +1,12 @@
 using DelimitedFiles
-f = open("d06-input.txt")
+f = open("d06-input.txt", "r")
 data = readdlm(f,'\t', String, '\n')
 close(f)
 
 global data_clean = []
 global list = ""
 global count = 0
+
 # clean data string - get groups into one line each
 #for lines in data
 #	if lines == '\n'
