@@ -1,23 +1,29 @@
-import string
-f = open('d06-input.txt', 'r')
-data = f.readlines()
-data_clean = []
-lst = ""
-count = 0
-# clean data string - get groups into one line each
-for lines in data:
-	if lines == "\n":
-		data_clean.append(lst.replace("\n", ""))
-		lst = ""
-		continue
-	else:
-		lst += lines
+using DelimitedFiles
+f = open("d06-input.txt")
+data = readdlm(f,'\t', String, '\n')
+close(f)
 
-#loop through each line
-for lines in data_clean:
+global data_clean = []
+global list = ""
+global count = 0
+# clean data string - get groups into one line each
+#for lines in data
+#	if lines == '\n'
+#		global data_clean = data_clean * replace(list, "\n" => "")
+#		global list = ""
+#		continue
+#	else
+#        global list = list * lines
+#    end
+#end
+# loop through each line
+for lines in data
 # loop through a...z
-	for letter in string.ascii_lowercase:
+    for letter in collect('a':'z')
 # if that letter in the line increment counter
-		if letter in lines:
-			count += 1
-print(count)
+		if letter in lines
+            global count += 1
+        end
+    end
+end
+println(count)
