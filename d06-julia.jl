@@ -1,4 +1,4 @@
-readInput() = split.(split(read(joinpath(@__DIR__, "d06-input.txt"), String), "\n\n"))
+readInput() = split.(split(read("d06-input.txt", String), "\n\n"))
 data = readInput()
 
 global count = 0
