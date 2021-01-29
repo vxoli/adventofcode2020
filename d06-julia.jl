@@ -7,7 +7,7 @@ global count = 0
 for line in data
 	txt = ""
 	for x in 1:length(line)
-		txt = union(txt,line[x])
+		txt = ∪(txt,line[x]) # ∪ symbol for union
 	end
 	global count += length(txt)
 end
