@@ -4,14 +4,14 @@ data = readInput()
 # Part 1
 
 global count = 0
-
-for lines in data
-    # loop through a...z
-    for letter in collect('a':'z')
-        # if that letter in the line increment counter
-		if occursin(letter, string(lines))
-            global count += 1
-        end
-    end
+for line in data
+	txt = ""
+	for x in 1:length(line)
+		txt = union(txt,line[x])
+	end
+	global count += length(txt)
 end
 println(count)
+
+# Part 2
+
