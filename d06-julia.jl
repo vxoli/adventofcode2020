@@ -12,7 +12,7 @@ for line in data
 	end
 	global part1 += length(txt)
 end
-println("the number of questions to which anyone answered yes = : $part1")
+println("Part 1: the number of questions to which anyone answered \"yes\" = : $part1")
 
 # Part 2
 
