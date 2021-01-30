@@ -10,9 +10,8 @@ myBags = [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_
 
 # find bags that can contain bags that can contain "shiny gold bags"
 for bag_col in myBags
-	union(myBags, [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_clean) if occursin(bag_col, data_clean[s][2])])
+	union!(myBags, [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_clean) if occursin(bag_col, data_clean[s][2])])
+	# using union removes the need to remove duplicate entries
 end
-# remove duplicate bag colours
-myBags = list(dict.fromkeys(myBags))	
-print(myBags)
-print(len(myBags))
+
+println("Part 1: How many bag colors can eventually contain at least one shiny gold bag? Answer: $(length(myBags))")
