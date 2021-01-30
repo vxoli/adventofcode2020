@@ -10,7 +10,7 @@ myBags = [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_
 
 # find bags that can contain bags that can contain "shiny gold bags"
 for bag_col in myBags
-	myBags += [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_clean) if bag_col in data_clean[s][2]]
+	union(myBags, [data_clean[s][1][1:length(data_clean[s][1])-5] for s in 1:length(data_clean) if occursin(bag_col, data_clean[s][2])])
 end
 # remove duplicate bag colours
 myBags = list(dict.fromkeys(myBags))	
