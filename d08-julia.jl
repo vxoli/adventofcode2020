@@ -84,6 +84,7 @@ for idx in testLines
 		end
         # executed the commands
         if command == "acc"
+
             global accumulator += value
             global codeLine += 1
 		end
@@ -102,6 +103,3 @@ for idx in testLines
 	end
 end
 println(accumulator)
-
-
-
