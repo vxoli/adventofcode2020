@@ -1,4 +1,6 @@
 #!/usr/bin/env julia
+# copied from fgcv
+# https://github.com/rgcv/aoc2020/blob/main/07/run.jl
 
 parsebags(filename) =
     let bagmap = Dict{String,Array{Pair{String,Int}}}()
