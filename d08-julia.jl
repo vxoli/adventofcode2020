@@ -23,7 +23,7 @@ while !(repeatedLines)
         break
     else push!(executedCodeLines, codeLine)
     end
-    # executed the commands
+    # execute the commands
     if command == "acc"
         global accumulator += value
         global codeLine += 1
@@ -53,19 +53,19 @@ end
 
 for idx in testLines
     if data[idx][1:3] == "jmp"
-		replace(data[idx], "jmp" => "nop")
+		data[idx] = replace(data[idx], "jmp" => "nop")
     else
-        replace(data[idx], "nop" => "jmp")
+        data[idx] = replace(data[idx], "nop" => "jmp")
 	end
-    # while-loop until a line is repeated
-    
-    # initialise variables
+
+# initialise variables
     global codeLine = 1
     global accumulator = 0
     global executedCodeLines = []
     global lastJmpLine = []
     global repeatedLines = false
 
+    # while-loop until a line is repeated
     while !(repeatedLines)
         # split input data into components
         command = data[codeLine][1:3]
@@ -75,16 +75,15 @@ for idx in testLines
             global repeatedLines = true
             # reset the change code line then end the loop
             if data[idx][1:3] == "jmp"
-                replace(data[idx], "jmp" => "nop")
+                data[idx] = replace(data[idx], "jmp" => "nop")
             else
-                replace(data[idx], "nop" => "jmp")
+                data[idx] = replace(data[idx], "nop" => "jmp")
+            end
             break
-			end
         else push!(executedCodeLines, codeLine)
 		end
-        # executed the commands
+        # execute the commands
         if command == "acc"
-
             global accumulator += value
             global codeLine += 1
 		end
@@ -97,9 +96,10 @@ for idx in testLines
         if codeLine > length(data)
             break
 		end
+    end # while
     if (repeatedLines == false) & (codeLine == length(data))
         break
 	end
-	end
-end
+end # for idx
+
 println(accumulator)
