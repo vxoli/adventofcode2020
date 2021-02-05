@@ -23,7 +23,6 @@ for idx in testLines:
         data[idx] = data[idx].replace("jmp","nop")
     else:
         data[idx] = data[idx].replace("nop", "jmp")
-    # while-loop until a line is repeated
     
     # initialise variables
     codeLine = 0
@@ -31,7 +30,8 @@ for idx in testLines:
     executedCodeLines = []
     lastJmpLine = []
     repeatedLines = False
-
+    
+    # while-loop until a line is repeated
     while not(repeatedLines):
         # split input data into components
         command = data[codeLine][0:3]
