@@ -4,7 +4,7 @@ data = readInput()
 # test data
 # data = ["nop +0", "acc +1", "jmp +4", "acc +3", "jmp -3", "acc -99", "acc +1", "jmp -4", "acc +6"]
 
-# Part q
+# Part 1
 
 # initialise variables
 global codeLine = 1
@@ -45,7 +45,7 @@ println(accumulator)
 testLines = []
 for (idx, i) in enumerate(data)
     if (i[1:3] == "jmp") | (i[1:3] == "nop")
-        push!(testLines, idx)
+        push!(testLines, idx-1) # ?? should this -1 be here - trying to convert betwwen python 0 index and julia 1 index.
 	end
 end
 
