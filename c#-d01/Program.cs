@@ -14,7 +14,7 @@ namespace c__d01
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if (int.Parse(data[i]) + int.Parse(data[j]) == 2020) Console.WriteLine(data[i],data[j]);
+                    if (int.Parse(data[i]) + int.Parse(data[j]) == 2020) Console.WriteLine(data[i],data[j], (int.Parse(data[i])*int.Parse(data[j])));
                 }
             }
             Console.WriteLine("Part 2");
@@ -22,7 +22,7 @@ namespace c__d01
             {   for (int j = 0; j < data.Length; j++)
                 {   for (int k = 0; k < data.Length; k++)
                     {
-                        if (int.Parse(data[i]) + int.Parse(data[j]) + int.Parse(data[k]) == 2020) Console.WriteLine(data[i],data[j],data[k]);
+                        if (int.Parse(data[i]) + int.Parse(data[j]) + int.Parse(data[k]) == 2020) Console.WriteLine(data[i],data[j],data[k], (int.Parse(data[i]) * int.Parse(data[j]) * int.Parse(data[k])));
                     }
                 }
             }
