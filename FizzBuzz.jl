@@ -16,7 +16,7 @@ for count = start:finish
     println(FizzBuzzString)
 end
 
-# Rockstart version
+# Rockstar version
 # z(i)=(f=i .%[3,5] .==0;sum(f)>0 ? foldl(*,["Fizz","Buzz"][f]) : i)
 # println.(z.(1:100))
 
