@@ -8,7 +8,6 @@ namespace c__d04
         {
             string filename = "../d04-input.txt";
             string data = File.ReadAllText(filename);
-            Console.WriteLine(data.Split(new[] { Environment.NewLine }, StringSplitOptions.None)[0]);
             // Some passport info runs over two or more lines. Group each passport data 
             // onto single line seperated by a space
             string[] passports = data.Split(new string[] { "\n\n" }, StringSplitOptions.None);
@@ -17,7 +16,8 @@ namespace c__d04
             {
                 if (passport.Contains("byr") & passport.Contains("iyr") & passport.Contains("eyr") & passport.Contains("hgt") & passport.Contains("hcl") & passport.Contains("ecl") & passport.Contains("pid")) valid++;
             }
-            Console.WriteLine("{0}", valid);
+            Console.WriteLine("Part 1:");
+            Console.WriteLine("In your batch file, how many passports are valid? {0}", valid);
 
         }
     }
