@@ -9,7 +9,8 @@ namespace c__d02
 		string filename = "../d02-input.txt";
 		string[] data = File.ReadAllLines(filename);
 
-		Console.WriteLine("Solving Part 1");
+		var counterPart1 = 0;
+		var counterPart2 = 0;
 
 		foreach (string line in data)
 		{	// 2-9 c: cccccccc
@@ -20,39 +21,18 @@ namespace c__d02
 			Int16 maximum = short.Parse(trdSplit[1]); // 9
 			String character = sndSplit[1]; // c
 			String password = fstSplit[1][1..]; // cccccccc
+			var numberCharacters = password.Split(character).Length -1;
+			if (numberCharacters >= minimum && numberCharacters <= maximum) counterPart1++;
+			if (String.Equals(password[minimum-1], character[0]) && String.Equals(password[maximum-1], character[0])) counterPart2++;
+			{
+				
+			}
 		}
+		Console.WriteLine("Solution Part 1:");
+		Console.WriteLine("Number of valid passwords is: {0}", counterPart1);
+		Console.WriteLine("Solution Part 2:");
+		Console.WriteLine("Number of valid passwords is: {0}", counterPart2);
 
-//# data = [x.strip().split() for x in data]
-//var valid = 0;
-//for row in 1:length(data)
-//	# min value = split(split(data[row])[1],"-")[1]
-//	# max value = split(split(data[row])[1],"-")[2]
-//	# character = split(split(data[row])[2],":")[1]
-//	# password to test = split(data[row])[3]
-//	# number occurances of letter = length(collect(eachmatch(Regex(split(split(data[row])[2],":")[1]), split(data[row])[3])))
-//	maximum = int.Parse(split(split(data[row])[1],"-")[2]);
-//	minimum = int.Parse(split(split(data[row])[1],"-")[1]);
-//    char_count = length(collect(eachmatch(Regex(split(split(data[row])[2],":")[1]), split(data[row])[3])))
-//	global valid += (char_count >= minimum) * (char_count <= maximum)
-//end
-//println("Part 1: Valid passwords: ", valid)
-
-//valid = 0
-//for row in 1:length(data)
-//	# char_pos_1 = split(split(data[row])[1],"-")[1]
-//	# char_pos_2 = split(split(data[row])[1],"-")[2]
-//	# character = split(split(data[row])[2],":")[1]
-//	# password to test = split(data[row])[3]
-//	# number occurances of letter = length(collect(eachmatch(Regex(split(split(data[row])[2],":")[1]), split(data[row])[3])))
-  //  test_char = split(split(data[row])[2],":")[1][1]
-  //  password = split(data[row])[3]
-//	char_pos_2 = parse(Int, split(split(data[row])[1],"-")[2])
-//    char_pos_1 = parse(Int, split(split(data[row])[1],"-")[1])
-//    if (password[char_pos_1] == test_char && password[char_pos_2] != test_char) || (password[char_pos_1] != test_char && password[char_pos_2] == test_char)
- //       global valid = valid + 1
-//    end
-//end
-//println("Part 2: Valid passwords: ", valid)
         }
     }
 }
