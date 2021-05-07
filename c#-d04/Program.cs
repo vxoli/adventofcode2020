@@ -14,7 +14,7 @@ namespace c__d04
             string[] passports = data.Split(new string[] { "\n\n" }, StringSplitOptions.None);
          // Part 1 Solution
             int valid = 0;
-            foreach (var passport in passports)
+            foreach (string passport in passports)
             {
                 if (passport.Contains("byr") & passport.Contains("iyr") & passport.Contains("eyr") & passport.Contains("hgt") & passport.Contains("hcl") & passport.Contains("ecl") & passport.Contains("pid")) valid++;
             }
@@ -22,9 +22,9 @@ namespace c__d04
             Console.WriteLine("In your batch file, how many passports are valid? {0}", valid);
 
         // Part 2 Solution
-            foreach (var passport in passports)
+            foreach (string passport in passports)
             {
-                //string passport_info = passport.Replace( { "\n" }, " " );
+                //string passportInfo = passport.Replace({Environment.NewLine}, " ");
                 //passport_info = passport_info.Split(" ");
             }
 
