@@ -7,22 +7,18 @@ namespace c__d04
         static void Main(string[] args)
         {
             string filename = "../d04-input.txt";
-            string[] data = File.ReadAllLines(filename);
+            string data = File.ReadAllText(filename);
+            Console.WriteLine(data.Split(new[] { Environment.NewLine }, StringSplitOptions.None)[0]);
             // Some passport info runs over two or more lines. Group each passport data 
             // onto single line seperated by a space
-            List<String> data_clean;
-            int index = 0;
-            foreach (var line in data) 
+            string[] passports = data.Split(new string[] { "\n\n" }, StringSplitOptions.None);
+            int valid = 0;
+            foreach (var passport in passports)
             {
-                if (String.Equals(line, ""))
-                {
-                    Console.WriteLine("empty line");
-                    index++;
-                    continue;
-                }
-                data_clean[index] = data_clean[index] + line + " ";
-
+                if (passport.Contains("byr") & passport.Contains("iyr") & passport.Contains("eyr") & passport.Contains("hgt") & passport.Contains("hcl") & passport.Contains("ecl") & passport.Contains("pid")) valid++;
             }
+            Console.WriteLine("{0}", valid);
+
         }
     }
 }
