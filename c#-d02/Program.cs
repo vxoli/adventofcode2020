@@ -23,7 +23,7 @@ namespace c__d02
 			String password = fstSplit[1][1..]; // cccccccc
 			var numberCharacters = password.Split(character).Length -1;
 			if (numberCharacters >= minimum && numberCharacters <= maximum) counterPart1++;
-			if (String.Equals(password[minimum-1], character[0]) && String.Equals(password[maximum-1], character[0])) counterPart2++;
+			if ( (String.Equals(password[minimum-1], character[0]) && !String.Equals(password[maximum-1], character[0])) | (!String.Equals(password[minimum-1], character[0]) && String.Equals(password[maximum-1], character[0])) )  counterPart2++;
 			{
 				
 			}
