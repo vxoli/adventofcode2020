@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 namespace c__d04
 {
     class Program
@@ -47,6 +48,15 @@ namespace c__d04
                 string hcl = indx_hcl.Split(":")[1];
                 string ecl = indx_ecl.Split(":")[1];
                 string pid = indx_pid.Split(":")[1];
+
+                string pattern = @"^#[0-9A-Fa-f]{6}$";
+                Regex hclRegex = new Regex(pattern);
+                pattern = @"\d{9}";
+                Regex pidRegex = new Regex(pattern);
+                
+
+                //if ((byr >= 1920 & byr <= 2002) & (iyr >= 2010 & iyr <= 2020) & (eyr >= 2020 & eyr <= 2030) & (hclRegex.Matches(hcl)) & (ecl in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]) & (pidRegex.Matches(pid)) & ( ((hgt.endswith("cm") & int(hgt[:len(hgt)-2]) >= 150 & int(hgt[:len(hgt)-2]) <= 192)) | ((hgt.endswith("in") & int(hgt[:len(hgt)-2]) >= 59 & int(hgt[:len(hgt)-2]) <= 76)) ):
+
 
             }
 
