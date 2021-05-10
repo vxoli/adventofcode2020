@@ -24,8 +24,30 @@ namespace c__d04
         // Part 2 Solution
             foreach (string passport in passports)
             {
-                //string passportInfo = passport.Replace({Environment.NewLine}, " ");
-                //passport_info = passport_info.Split(" ");
+                string passportInfo = passport.Replace("\n", " ");
+                string[] passportInfoParsed = passportInfo.Split(" ");
+                string indx_iyr = "", indx_byr = "", indx_eyr = "", indx_hgt = "", indx_hcl = "", indx_ecl = "", indx_pid = "";
+                foreach (string indx in passportInfoParsed)
+                {
+                    if (indx.Contains("iyr:")) indx_iyr = indx;
+                    if (indx.Contains("byr:")) indx_byr = indx;
+                    if (indx.Contains("eyr:")) indx_eyr = indx;
+                    if (indx.Contains("hgt:")) indx_hgt = indx;
+                    if (indx.Contains("hcl:")) indx_hcl = indx;
+                    if (indx.Contains("ecl:")) indx_ecl = indx;
+                    if (indx.Contains("pid:")) indx_pid = indx;
+                }
+                // if any of the indx_... are empty then invalid so skip to next passport
+                if (indx_iyr.Equals("") | indx_byr.Equals("") | indx_eyr.Equals("") | indx_hgt.Equals("") | indx_hcl.Equals("") | indx_ecl.Equals("") | indx_pid.Equals("") ) continue;
+
+                int byr = int.Parse(indx_byr.Split(":")[1]);
+                int iyr = int.Parse(indx_iyr.Split(":")[1]);
+                int eyr = int.Parse(indx_eyr.Split(":")[1]);
+                string hgt = indx_hgt.Split(":")[1];
+                string hcl = indx_hcl.Split(":")[1];
+                string ecl = indx_ecl.Split(":")[1];
+                string pid = indx_pid.Split(":")[1];
+
             }
 
         }
