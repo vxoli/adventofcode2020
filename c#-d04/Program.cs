@@ -50,8 +50,11 @@ namespace c__d04
                 string pid = indx_pid.Split(":")[1];
 
                 // setup boolean variable for validity tests
+                // validity test for birth year
                 bool byr_valid = (byr >= 1920) & (byr <= 2002);
+                // validity test for issue year
                 bool iyr_valid = (iyr >= 2010) & (iyr <= 2020);
+                // validity test for expiry year
                 bool eyr_valid = (eyr >= 2020) & (eyr <= 2030);
 
                 // setup Regex pattersn for hcl and pid
@@ -61,21 +64,21 @@ namespace c__d04
                 Regex pidRegex = new Regex(pattern);
 
                 //bool hcl_valid = hclRegex.Matches(hcl);
+
+                //va;lidity test for eye colour
                 bool ecl_valid = ecl.Equals("amb") | ecl.Equals("blu") | ecl.Equals("brn") | ecl.Equals("gry") | ecl.Equals("grn") | ecl.Equals("hzl") | ecl.Equals("oth");
 
                 //bool pid_valid = pidrEGEX.Matches(pid);
                 
-                //do validity tests for height
-                //seperate units from value
+                // validity tests for height
+                //1 st: seperate units from value
                 // value part = hgt.Substring(0, hgt.Length-2)
                 // unit part = hgt.Substring( hgt.Length - 2, 2)
                 Console.WriteLine(indx_hgt +" "+ hgt +" "+ hgt.Substring(hgt.Length-2,2));
                 // if hgt units missing invalid entry so skip to next, hgt.Substring(hgt.Length-2,2) returns units
                 if (!(hgt.Substring(hgt.Length-2,2).Equals("cm") | hgt.Substring(hgt.Length-2,2).Equals("in"))) continue;
-                
                 int hgt_value = int.Parse(hgt.Substring(0,hgt.Length-2));
                 string hgt_units = hgt.Substring(hgt.Length-2,2);
-                
                 bool hgt_valid = (hgt_value >= 150 & hgt_value <= 192 & hgt_units.Equals("cm")) | (hgt_value >= 59 & hgt_value <= 76 & hgt_units.Equals("in"));
 
 
