@@ -54,11 +54,24 @@ namespace c__d04
                 bool iyr_valid = (iyr >= 2010) & (iyr <= 2020);
                 bool eyr_valid = (eyr >= 2020) & (eyr <= 2030);
 
+                // setup Regex pattersn for hcl and pid
                 string pattern = @"^#[0-9A-Fa-f]{6}$";
                 Regex hclRegex = new Regex(pattern);
                 pattern = @"\d{9}";
                 Regex pidRegex = new Regex(pattern);
-                
+
+                //bool hcl_valid = hclRegex.Matches(hcl);
+                bool ecl_valid = ecl.Equals("amb") | ecl.Equals("blu") | ecl.Equals("brn") | ecl.Equals("gry") | ecl.Equals("grn") | ecl.Equals("hzl") | ecl.Equals("oth");
+
+                //bool pid_valid = pidrEGEX.Matches(pid);
+                //do validity tests for height
+                //seperate units from value
+                // int(hgt[:len(hgt)-2]) >= 150 & int(hgt[:len(hgt)-2]) <= 192)) | ((hgt.EndsWith("in") & int(hgt[:len(hgt)-2]) >= 59 & int(hgt[:len(hgt)-2]) <= 76))
+                // value = .Substring(0, .Length-2)
+                // unit = .Substring( .Length - 3, .Length)
+                Console.WriteLine(hgt.Length);
+                Console.WriteLine(hgt.Substring(0,hgt.Length-2));
+
 
                 //if ((byr >= 1920 & byr <= 2002) & (iyr >= 2010 & iyr <= 2020) & (eyr >= 2020 & eyr <= 2030) & (hclRegex.Matches(hcl)) & (ecl in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]) & (pidRegex.Matches(pid)) & ( ((hgt.EndsWith("cm") & int(hgt[:len(hgt)-2]) >= 150 & int(hgt[:len(hgt)-2]) <= 192)) | ((hgt.EndsWith("in") & int(hgt[:len(hgt)-2]) >= 59 & int(hgt[:len(hgt)-2]) <= 76)) ):
 
