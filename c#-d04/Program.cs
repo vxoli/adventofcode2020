@@ -81,7 +81,7 @@ namespace c__d04
                 string hgt_units = hgt.Substring(hgt.Length-2,2);
                 bool hgt_valid = (hgt_value >= 150 & hgt_value <= 192 & hgt_units.Equals("cm")) | (hgt_value >= 59 & hgt_value <= 76 & hgt_units.Equals("in"));
 
-                //if all the etsts are valid then the passport is counted as a valid passport
+                //if all the tests are valid then the passport is counted as a valid passport
                 if (byr_valid & iyr_valid & eyr_valid & hcl_valid & ecl_valid & pid_valid & hgt_valid) valid++;
 
 
