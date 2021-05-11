@@ -72,12 +72,11 @@ namespace c__d04
                 bool pid_valid = pidRegex.IsMatch(pid);
                 
                 // validity tests for height
-                //1 st: seperate units from value
-                // value part = hgt.Substring(0, hgt.Length-2)
-                // unit part = hgt.Substring( hgt.Length - 2, 2)
-
                 // if hgt units missing invalid entry so skip to next, hgt.Substring(hgt.Length-2,2) returns units
                 if (!(hgt.Substring(hgt.Length-2,2).Equals("cm") | hgt.Substring(hgt.Length-2,2).Equals("in"))) continue;
+                // seperate the value and the units
+                // value part = hgt.Substring(0, hgt.Length-2)
+                // unit part = hgt.Substring( hgt.Length - 2, 2)
                 int hgt_value = int.Parse(hgt.Substring(0,hgt.Length-2));
                 string hgt_units = hgt.Substring(hgt.Length-2,2);
                 bool hgt_valid = (hgt_value >= 150 & hgt_value <= 192 & hgt_units.Equals("cm")) | (hgt_value >= 59 & hgt_value <= 76 & hgt_units.Equals("in"));
