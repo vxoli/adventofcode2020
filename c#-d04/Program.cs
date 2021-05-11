@@ -74,7 +74,7 @@ namespace c__d04
                 //1 st: seperate units from value
                 // value part = hgt.Substring(0, hgt.Length-2)
                 // unit part = hgt.Substring( hgt.Length - 2, 2)
-                Console.WriteLine(indx_hgt +" "+ hgt +" "+ hgt.Substring(hgt.Length-2,2));
+
                 // if hgt units missing invalid entry so skip to next, hgt.Substring(hgt.Length-2,2) returns units
                 if (!(hgt.Substring(hgt.Length-2,2).Equals("cm") | hgt.Substring(hgt.Length-2,2).Equals("in"))) continue;
                 int hgt_value = int.Parse(hgt.Substring(0,hgt.Length-2));
