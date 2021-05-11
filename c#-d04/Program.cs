@@ -64,13 +64,19 @@ namespace c__d04
                 bool ecl_valid = ecl.Equals("amb") | ecl.Equals("blu") | ecl.Equals("brn") | ecl.Equals("gry") | ecl.Equals("grn") | ecl.Equals("hzl") | ecl.Equals("oth");
 
                 //bool pid_valid = pidrEGEX.Matches(pid);
+                
                 //do validity tests for height
                 //seperate units from value
-                // int(hgt[:len(hgt)-2]) >= 150 & int(hgt[:len(hgt)-2]) <= 192)) | ((hgt.EndsWith("in") & int(hgt[:len(hgt)-2]) >= 59 & int(hgt[:len(hgt)-2]) <= 76))
-                // value = .Substring(0, .Length-2)
-                // unit = .Substring( .Length - 3, .Length)
-                Console.WriteLine(hgt.Length);
-                Console.WriteLine(hgt.Substring(0,hgt.Length-2));
+                // value part = hgt.Substring(0, hgt.Length-2)
+                // unit part = hgt.Substring( hgt.Length - 2, 2)
+                Console.WriteLine(indx_hgt +" "+ hgt +" "+ hgt.Substring(hgt.Length-2,2));
+                // if hgt units missing invalid entry so skip to next, hgt.Substring(hgt.Length-2,2) returns units
+                if (!(hgt.Substring(hgt.Length-2,2).Equals("cm") | hgt.Substring(hgt.Length-2,2).Equals("in"))) continue;
+                
+                int hgt_value = int.Parse(hgt.Substring(0,hgt.Length-2));
+                string hgt_units = hgt.Substring(hgt.Length-2,2);
+                
+                bool hgt_valid = (hgt_value >= 150 & hgt_value <= 192 & hgt_units.Equals("cm")) | (hgt_value >= 59 & hgt_value <= 76 & hgt_units.Equals("in"));
 
 
                 //if ((byr >= 1920 & byr <= 2002) & (iyr >= 2010 & iyr <= 2020) & (eyr >= 2020 & eyr <= 2030) & (hclRegex.Matches(hcl)) & (ecl in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]) & (pidRegex.Matches(pid)) & ( ((hgt.EndsWith("cm") & int(hgt[:len(hgt)-2]) >= 150 & int(hgt[:len(hgt)-2]) <= 192)) | ((hgt.EndsWith("in") & int(hgt[:len(hgt)-2]) >= 59 & int(hgt[:len(hgt)-2]) <= 76)) ):
