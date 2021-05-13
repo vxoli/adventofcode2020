@@ -12,25 +12,43 @@ namespace c__d06
             // Collect together batches seperated by empty line
             // and process these batches to get answer
             string list = "";
-            int count = 0;
+            int number = 0; //number of responses in each group
+            int countPart1 = 0;
+            int CountPart2 = 0;
             foreach (string line in data)
             {
+                //Part 1
                 list += line;
+                number++;
                 // If the line is blank indicates end-of-group
                 // so calculate the responses and reset variables
                 if (line.Equals(""))
-                { 
+                {   number--; //number already incremented above, if line blank need to decrement by one
                     for (char letter = 'a'; letter <= 'z'; letter++)
                     {
-                        if (list.Contains(letter)) count++;
+                        if (list.Contains(letter)) countPart1++;
                     }
+                //Part 2
+                // With each line count letters in the line
+                //at the end of the group if the count of a letter = number of lines in group then
+                //everyone answered that question so counter countPart2 increments.
+                    for (char letter = 'a'; letter <= 'z'; letter++)
+                    {
+                        int count = list.Split(letter).Length-1; // returns number of occurances of a char in string
+                        if (count == number) CountPart2++;
+                    }
+                    // reset the variables
                     list = "";
+                    number = 0;
                 }
+
+
+
             }
             Console.WriteLine("Part 1");
-            Console.WriteLine("For each group, count the number of questions to which anyone answered \"yes\". What is the sum of those counts? :{0}",count);
+            Console.WriteLine("For each group, count the number of questions to which anyone answered \"yes\". What is the sum of those counts? :{0}",countPart1);
             Console.WriteLine("Part 2:");
-            Console.WriteLine("For each group, count the number of questions to which everyone answered \"yes\". What is the sum of those counts? :{0}",count);            
+            Console.WriteLine("For each group, count the number of questions to which everyone answered \"yes\". What is the sum of those counts? :{0}",CountPart2);
         }
     }
 }
