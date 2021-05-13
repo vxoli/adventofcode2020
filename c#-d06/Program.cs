@@ -27,6 +27,7 @@ namespace c__d06
                     list = "";
                 }
             }
+            Console.WriteLine("Part 1");
             Console.WriteLine("For each group, count the number of questions to which anyone answered \"yes\". What is the sum of those counts? :{0}",count);
         }
     }
