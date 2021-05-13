@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using System.Collections.Generic;
 namespace c__d05
 {
     class Program
@@ -10,6 +10,7 @@ namespace c__d05
             string[] data = File.ReadAllLines("../d05-input.txt");
             
             double maxseatid = 0;
+            var seatidList = new List<double>();
 
             foreach (string line in data)
             {
@@ -23,23 +24,32 @@ namespace c__d05
                 double seatNum = Convert.ToInt32(seatCode.Substring(0,1)=="R")*Math.Pow(2,2) + Convert.ToInt32(seatCode.Substring(1,1)=="R")*Math.Pow(2,1) + Convert.ToInt32(seatCode.Substring(2,1)=="R")*Math.Pow(2,0);
                 double seatid = rowNum * 8 + seatNum;
                 if (seatid > maxseatid) maxseatid = seatid;
+                seatidList.Add(seatid);
                 
             }
             Console.WriteLine("Part 1:");
             Console.WriteLine("The highest seat ID on a boarding pass? {0}", maxseatid);
+            seatidList.Sort();
+            double myseat = 0;
+
+            for (int s = 0; s < seatidList.Count -1; s++)
+            {
+                if (seatidList[s+1] - seatidList[s] != 1) myseat = seatidList[s]+1;
+            }
+            Console.WriteLine("Part 2:");
+            Console.WriteLine("What is the ID of your seat? {0}", myseat);
         }
     }
 }
-//f = open('d05-input.txt', 'r')
-//data = f.readlines()
+
 
 //maxseatid=0
+//seatid=[]
 
-//for line in data:
+//for idx, line in enumerate(data):
 //    row_code = line[:7]
 //    seat_code= line[7:]
 //    seatrow = []
-//    seatid = 0
 //    for s in range(0,128,1):
 //        seatrow.append(s)
 //    for s in row_code:
@@ -48,13 +58,21 @@ namespace c__d05
 //        else:
 //            seatrow = seatrow[int(len(seatrow)/2):]
 //    seatnum = []
-//    for s in range(0,8,1):
+//   for s in range(0,8,1):
 //        seatnum.append(s)
 //    for s in seat_code:
 //        if s == "L":
 //            seatnum = seatnum[:int(len(seatnum)/2)]
 //        else:
 //            seatnum = seatnum[int(len(seatnum)/2):]
-//    seatid = seatrow[0] * 8 + seatnum[0]
-//    maxseatid = (seatid * (seatid > maxseatid)) + (maxseatid * (seatid <= maxseatid))
-//    print(seatrow,seatnum, seatid, maxseatid)
+//    seatid.append(seatrow[0] * 8 + seatnum[0])
+
+//seatid.sort()
+//for s in range(0,len(seatid)-1):
+//    if (seatid[s+1] - seatid[s]) == 1:
+//        continue
+//    else:
+//        print((seatid[s+1]+seatid[s]) / 2)
+
+
+    
