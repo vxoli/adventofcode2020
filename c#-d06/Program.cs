@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 namespace c__d06
 {
     class Program
@@ -7,10 +8,26 @@ namespace c__d06
         static void Main(string[] args)
         {
             string[] data = File.ReadAllLines("../d06-input.txt");
-            string lst = "";
+            // Loop through all the lines in the input data
+            // Collect together batches seperated by empty line
+            // and process these batches to get answer
+            string list = "";
             int count = 0;
-            
-
+            foreach (string line in data)
+            {
+                list += line;
+                // If the line is blank indicates end-of-group
+                // so calculate the responses and reset variables
+                if (line.Equals(""))
+                { 
+                    for (char letter = 'a'; letter <= 'z'; letter++)
+                    {
+                        if (list.Contains(letter)) count++;
+                    }
+                    list = "";
+                }
+            }
+            Console.WriteLine("For each group, count the number of questions to which anyone answered \"yes\". What is the sum of those counts? :{0}",count);
         }
     }
 }
