@@ -1,12 +1,16 @@
 ﻿using System;
-
+using System.IO;
 namespace c__d06
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] data = File.ReadAllLines("../d06-input.txt");
+            string lst = "";
+            int count = 0;
+            
+
         }
     }
 }
