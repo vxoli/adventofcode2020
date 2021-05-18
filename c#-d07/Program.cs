@@ -9,14 +9,19 @@ namespace c__d07
         static void Main(string[] args)
         {
             string[] data = File.ReadAllLines("../d07-input.txt");
-            var dataClean = from line in data select line.Split(" contain ");
-            // find the bags that contain "shiny gold bags"
-            //stuck here working out the comprehension expression for c#
-            //?? List<Foo> fooList = new List<Foo>();
-            //int longestName = fooList.Where((foo, index) => foo.Bar > 10 + index)
-            //             .Select(foo => foo.Name)
-            //             .Max();
-        
+            //split lines into bag colour and what that bag can contain
+            string bagColour, bagContents;
+            string[] myBags = new string[data.Length];
+            int index = 0;
+            foreach (string line in data)
+            {
+                bagColour = line.Split(" contain ")[0];
+                bagContents = line.Split(" contain ")[1];
+                if (bagContents.Contains("shiny gold")) 
+                {myBags[index] = bagContents;
+                index++;}
+            }
+
         }
     }
 }
