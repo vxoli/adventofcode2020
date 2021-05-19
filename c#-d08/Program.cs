@@ -9,6 +9,7 @@ namespace c__d08
         static void Main(string[] args)
         {
             string[] data = File.ReadAllLines(@"../d08-input.txt");
+            //PART 1
             //initialise variables
             int accumulator = 0, codeLine=0;
             var executedCodeLines = new List<int>();
@@ -33,10 +34,65 @@ namespace c__d08
                     if (command == "nop") codeLine++;
                     if (command == "jmp") codeLine += int.Parse(value);
                 }
-
             }
             Console.WriteLine("Part 1: Immediately before any instruction is executed a second time, what value is in the accumulator? {0}", accumulator);
-
+            
+            //PART 2
+            //identify all the lines with jmp or nop
+            var testLines = new List<int>();
+            codeLine = 0;
+            foreach (var line in data)
+            {
+                var command = data[codeLine].Split(" ")[0];
+                var value = data[codeLine].Split(" ")[1];
+                if ((command == "jmp") | (command == "nop")) testLines.Add(codeLine);
+                codeLine++;
+            }
+            //loop through the list changing each in turn to the other
+            codeLine = 0;
+            foreach (var index in testLines)
+            {
+                var command = data[index].Split(" ")[0];
+                var value = data[index].Split(" ")[1];
+                if (command == "jmp") data[index].Replace("jmp", "nop");
+                else data[index].Replace("nop","jmp");                
+            
+                //initialise variables
+                codeLine = 0;
+                accumulator = 0;
+                executedCodeLines.Clear();
+                var lastJmpLine = new List<int>();
+                repeatedLines = false;
+            
+                //while-loop until a line is repeated
+                while (!repeatedLines)
+                {
+                    command = data[codeLine].Split(" ")[0];
+                    value = data[codeLine].Split(" ")[1];
+                    //if the line of code has been executed then change the repeatedLines variable
+                    if (executedCodeLines.Contains(codeLine))
+                    {
+                        repeatedLines = true;
+                        //reset the change code line then end the loop
+                        if (command == "jmp") data[index] = data[index].Replace("jmp","nop");
+                        else data[index] = data[index].Replace("nop","jmp");
+                        break;
+                    }
+                    else executedCodeLines.Add(codeLine);
+                    
+                    //execute the commands
+                    if (command == "acc")
+                    {
+                        accumulator += int.Parse(value);
+                        codeLine++;
+                    }
+                    if (command == "nop") codeLine++;
+                    if (command == "jmp") codeLine += int.Parse(value);
+                    if (codeLine > data.Length-1) break;
+                }
+            if ((repeatedLines == false) && (codeLine == data.Length)) break;
+        }
+        Console.WriteLine(accumulator);
         }
     }
 }
