@@ -17,7 +17,8 @@ namespace c__d09
             bool solution = false;
             for (int i = preamble; i == numbers.Length; i++)
             {//put next 25 numbers in a list
-            for (int j = 0; j < 25; j++) xmasList[j] = numbers[preamble+j-1];
+            xmasList.Clear();
+            for (int j = 0; j < 25; j++) xmasList[j] = numbers[preamble+i+j-1];
             // use foreach loop to cycle through the lists of numbers
                 solution = false;
                 foreach (var num1 in xmasList) 

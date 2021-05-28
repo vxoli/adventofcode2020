@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -10,18 +11,40 @@ namespace c__d07
         {
             string[] data = File.ReadAllLines("../d07-input.txt");
             //split lines into bag colour and what that bag can contain
+            //select the bags that can contain shiny gold bags
             string bagColour, bagContents;
-            string[] myBags = new string[data.Length];
+            var myBags = new List<string>();
+            var moreBags = new List<string>();
             int index = 0;
             foreach (string line in data)
             {
                 bagColour = line.Split(" contain ")[0];
                 bagContents = line.Split(" contain ")[1];
-                if (bagContents.Contains("shiny gold")) 
-                {myBags[index] = bagContents;
-                index++;}
+                if (bagContents.Contains("shiny gold")) myBags.Add(bagColour.Substring(0,bagColour.Length-5));
             }
-
+            //find the bags that can contain bags that contain shiny gold bags
+            foreach (string bag in myBags)
+            {Console.WriteLine(bag);
+                foreach (string line in data)
+                {
+                    bagColour = line.Split(" contain ")[0];
+                    bagContents = line.Split(" contain ")[1];
+                    if (bagContents.Contains(bag)) moreBags.Add(bagColour.Substring(0,bagColour.Length-5));
+                }
+            }
+            foreach (var line in myBags)
+            {
+                Console.WriteLine(line+"~");
+                index++;
+            }
+            foreach (var line in moreBags)
+            {
+                Console.WriteLine(line+"+");
+                index++;
+            }
+            // remove duplicates
+            //List<T> noDupes = withDupes.Distinct().ToList();
+            Console.WriteLine(index);
         }
     }
 }
