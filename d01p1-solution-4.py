@@ -1,4 +1,4 @@
-f = open('d1p1-input.txt', 'r')
+f = open('d01p1-input.txt', 'r')
 data = list(map(int,f.readlines()))
 
 def reconcile(x,y):
