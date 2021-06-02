@@ -106,11 +106,10 @@ Find a chain that uses all of your adapters to connect the charging outlet to yo
             int joltDiff1 = 0, joltDiff2 = 0, joltDiff3 = 0;
             foreach (var adapter in data)
             {
-               joltDiff1 += (adapter - jolts == 1) ? 1:0;
+                joltDiff1 += (adapter - jolts == 1) ? 1:0;
                 joltDiff2 += (adapter - jolts == 2) ? 1:0;
                 joltDiff3 += (adapter - jolts == 3) ? 1:0;
                 jolts = adapter;
-
             }
             joltDiff3++;
             Console.WriteLine("Part 1:");
