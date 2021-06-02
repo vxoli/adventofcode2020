@@ -89,7 +89,7 @@ In this larger example, in a chain that uses all of the adapters, there are 22 d
 Find a chain that uses all of your adapters to connect the charging outlet to your device's built-in adapter and count the joltage differences between the charging outlet, the adapters, and your device. What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
 
  */
- namespace c__d11
+ namespace c__d10
 {
     class Program
     {
@@ -114,11 +114,11 @@ Find a chain that uses all of your adapters to connect the charging outlet to yo
             }
             joltDiff3++;
             Console.WriteLine("Part 1:");
-            Console.WriteLine($"# of 1 jolt differences:{joltDiff1}");
+            Console.WriteLine($"# of 1 jolt differences: {joltDiff1}");
             Console.WriteLine($"# of 3 jolt Differences: {joltDiff3}");
             Console.WriteLine($"Product = {joltDiff1*joltDiff3}");
-            
-/*         }
+        }            
+/*
 # Day 10:
 ## --- Part Two ---
 
@@ -174,6 +174,6 @@ You glance back down at your bag and try to remember why you brought so many ada
 What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
 
  */
- 
+
     }
 }
