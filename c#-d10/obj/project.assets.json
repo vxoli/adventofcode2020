@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/christopher/Documents/code/adventofcode2020/c#-d10/c#-d10.csproj",
+      "projectUniqueName": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d10/c#-d10.csproj",
       "projectName": "c#-d10",
-      "projectPath": "/home/christopher/Documents/code/adventofcode2020/c#-d10/c#-d10.csproj",
+      "projectPath": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d10/c#-d10.csproj",
       "packagesPath": "/home/christopher/.nuget/packages/",
-      "outputPath": "/home/christopher/Documents/code/adventofcode2020/c#-d10/obj/",
+      "outputPath": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d10/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/christopher/.nuget/NuGet/NuGet.Config"
@@ -30,6 +30,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -41,6 +42,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -56,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.409/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

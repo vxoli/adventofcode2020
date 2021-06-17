@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/christopher/Documents/code/adventofcode2020/c#-d11/c#-d11.csproj": {}
+    "/home/christopher/Documents/GitHub/adventofcode2020/c#-d11/c#-d11.csproj": {}
   },
   "projects": {
-    "/home/christopher/Documents/code/adventofcode2020/c#-d11/c#-d11.csproj": {
+    "/home/christopher/Documents/GitHub/adventofcode2020/c#-d11/c#-d11.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/christopher/Documents/code/adventofcode2020/c#-d11/c#-d11.csproj",
+        "projectUniqueName": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d11/c#-d11.csproj",
         "projectName": "c#-d11",
-        "projectPath": "/home/christopher/Documents/code/adventofcode2020/c#-d11/c#-d11.csproj",
+        "projectPath": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d11/c#-d11.csproj",
         "packagesPath": "/home/christopher/.nuget/packages/",
-        "outputPath": "/home/christopher/Documents/code/adventofcode2020/c#-d11/obj/",
+        "outputPath": "/home/christopher/Documents/GitHub/adventofcode2020/c#-d11/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/christopher/.nuget/NuGet/NuGet.Config"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,6 +36,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -45,12 +47,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[3.1.16, 3.1.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.409/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.301/RuntimeIdentifierGraph.json"
         }
       }
     }
