@@ -1,11 +1,12 @@
 use std::str::FromStr;
 
 fn main() {
-    let input = read_all_as::<u32>("/home/christopher/Documents/GitHub/adventofcode2020/d01p1-input.txt");
+    let input =
+        read_all_as::<u32>("/home/christopher/Documents/GitHub/adventofcode2020/d01p1-input.txt");
     let mut answer = part1(&input);
-    println!("Part 1: product = {}",answer);
+    println!("Part 1: product = {}", answer);
     answer = part2(&input);
-    println!("Part 2: product = {}",answer);
+    println!("Part 2: product = {}", answer);
 }
 
 fn part1(expenses: &[u32]) -> u32 {
@@ -32,7 +33,7 @@ fn part2(expenses: &[u32]) -> u32 {
     panic!("Couldn't find 3 expenses that add up to 2020")
 }
 
-pub fn read_all_as<T: FromStr>(file_name: &str) -> Vec<T> {
+fn read_all_as<T: FromStr>(file_name: &str) -> Vec<T> {
     read_all(file_name)
         .iter()
         .map(|x| match x.parse::<T>() {
@@ -42,7 +43,7 @@ pub fn read_all_as<T: FromStr>(file_name: &str) -> Vec<T> {
         .collect()
 }
 
-pub fn read_all(file_name: &str) -> Vec<String> {
+fn read_all(file_name: &str) -> Vec<String> {
     std::fs::read_to_string(file_name)
         .expect("file not found!")
         .lines()
