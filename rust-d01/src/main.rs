@@ -1,8 +1,7 @@
 use std::str::FromStr;
 
 fn main() {
-    let input =
-        read_all_as::<u32>("/home/christopher/Documents/GitHub/adventofcode2020/d01p1-input.txt");
+    let input = read_all_as::<u32>("/home/christopher/Documents/GitHub/adventofcode2020/d01p1-input.txt");
     let mut answer = part1(&input);
     println!("Part 1: product = {}", answer);
     answer = part2(&input);
