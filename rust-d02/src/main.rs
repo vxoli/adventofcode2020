@@ -52,15 +52,10 @@ fn main() {
         // split the string into min, max, letter and pasword
         let (min, max, letter, password) = split_the_line(line);
         // count occurrences of the letter in the password
-        let occurrences = count_occurrences(letter, password);
         // Part 1: check if count falls into the rage allowed
-        if occurrences <= max && occurrences >= min {validpart1 += 1; }
+        if count_part1(letter, password, min, max) {validpart1 += 1; }
         // Part 2 check if one and only one of the positions in password contains the letter
-        let mut valid: bool = false;
-        for (index, ch) in password.chars().enumerate() {
-            if ((index + 1) as i32 == min || (index+1) as i32 == max )&& ch == letter {valid = !valid;}
-        }
-        if valid {validpart2 += 1;}
+        if count_part2(letter, password, min, max) {validpart2 += 1;}
     }
     println!("Part 1: valid passwords = {}", validpart1);
     println!("Part 2: valid passwords = {}", validpart2);
@@ -85,13 +80,23 @@ fn split_the_line(line: &str) -> (i32, i32, char, &str) {
     (min, max, letter, split_string[2])
 }
 
-fn count_occurrences(letter: char, password: &str) -> i32 {
+fn count_part1(letter: char, password: &str, min:i32, max: i32) -> bool {
             // clumsy for loop to count occurrences of the letter in password
             let mut occurrences: i32 = 0;
+            let mut valid: bool = false;
             for c in password.chars() {
                 if c == letter {
                     occurrences += 1;
                 }
             }
-            occurrences
+            if occurrences <= max && occurrences >= min {valid = !valid;}
+            valid
+}
+
+fn count_part2(letter: char, password: &str, min: i32, max: i32) -> bool {
+    let mut valid: bool = false;
+    for (index, ch) in password.chars().enumerate() {
+        if ((index + 1) as i32 == min || (index+1) as i32 == max )&& ch == letter {valid = !valid;}
+    }
+    valid
 }
