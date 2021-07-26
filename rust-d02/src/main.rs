@@ -28,15 +28,24 @@ use std::fs;
 fn main() {
     let filename = "/home/christopher/Documents/GitHub/adventofcode2020/d02-input.txt";
     let data = read_input_data(filename);
-    for (index, line) in data.iter().enumerate() {
+    let mut valid: i32 = 0;
+    for (_index, line) in data.iter().enumerate() {
         let split_string = line.split(" ").collect::<Vec<&str>>();
-        let min = split_string[0].split("-").collect::<Vec<&str>>()[0].parse::<i32>();
-        let max = split_string[0].split("-").collect::<Vec<&str>>()[1].parse::<i32>();
-        let letter = split_string[1].split(":").collect::<Vec<&str>>()[0].parse::<char>();
-        println!("min {:?}, max {:?}, letter {:?}, password {:?}",min,max,letter,split_string[2]);
-
+        let min: i32 = split_string[0].split("-").collect::<Vec<&str>>()[0].parse::<i32>().unwrap();
+        let max: i32 = split_string[0].split("-").collect::<Vec<&str>>()[1].parse::<i32>().unwrap();
+        let letter: char = split_string[1].split(":").collect::<Vec<&str>>()[0].parse::<char>().unwrap();
+        // clumsy for loop to count occurrences of the letter in password
+        let mut occurrences: i32 = 0;
+        for c in split_string[2].chars() {
+            if c == letter {
+                occurrences += 1;
+            }
+        }
+        if occurrences <= max && occurrences >= min {
+            valid += 1;
+        }
     }
-
+    println!("Part 1: valid password = {}", valid);
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
