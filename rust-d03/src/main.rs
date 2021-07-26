@@ -86,7 +86,7 @@ fn main() {
     trees *= toboggan_tragectory(&data,1,5);
     trees *= toboggan_tragectory(&data,1,7);
     trees *= toboggan_tragectory(&data,2,1);
-    println!("Part 2: trees encounted = {}", trees);
+    println!("Part 2: product of trees encounted = {}", trees);
 }
 
 //Start function definitions
