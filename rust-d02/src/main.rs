@@ -30,17 +30,11 @@ fn main() {
     let data = read_input_data(filename);
     let mut valid: i32 = 0;
     for (_index, line) in data.iter().enumerate() {
-        let split_string = line.split(" ").collect::<Vec<&str>>();
-        let min: i32 = split_string[0].split("-").collect::<Vec<&str>>()[0].parse::<i32>().unwrap();
-        let max: i32 = split_string[0].split("-").collect::<Vec<&str>>()[1].parse::<i32>().unwrap();
-        let letter: char = split_string[1].split(":").collect::<Vec<&str>>()[0].parse::<char>().unwrap();
-        // clumsy for loop to count occurrences of the letter in password
-        let mut occurrences: i32 = 0;
-        for c in split_string[2].chars() {
-            if c == letter {
-                occurrences += 1;
-            }
-        }
+        // split the string into min, max, letter and pasword
+        let (min, max, letter, password) = split_the_line(line);
+        // count occurrences of the letter in the password
+        let occurrences = count_occurrences(letter, password);
+        // check if count falls into the rage allowed
         if occurrences <= max && occurrences >= min {
             valid += 1;
         }
@@ -55,4 +49,23 @@ fn read_input_data(filename: &str) -> Vec<String> {
                     .map(|line| line.to_string())
                     .collect();
     input
+}
+
+fn split_the_line(line: &str) -> (i32, i32, char, &str) {
+    let split_string = line.split(" ").collect::<Vec<&str>>();
+    let min: i32 = split_string[0].split("-").collect::<Vec<&str>>()[0].parse::<i32>().unwrap();
+    let max: i32 = split_string[0].split("-").collect::<Vec<&str>>()[1].parse::<i32>().unwrap();
+    let letter: char = split_string[1].split(":").collect::<Vec<&str>>()[0].parse::<char>().unwrap();
+    (min, max, letter, split_string[2])
+}
+
+fn count_occurrences(letter: char, password: &str) -> i32 {
+            // clumsy for loop to count occurrences of the letter in password
+            let mut occurrences: i32 = 0;
+            for c in password.chars() {
+                if c == letter {
+                    occurrences += 1;
+                }
+            }
+            occurrences
 }
