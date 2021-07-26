@@ -62,15 +62,15 @@ Starting at the top-left corner of your map and following a slope of right 3 and
 fn main() {
     let data = read_input_data("/home/christopher/Documents/GitHub/adventofcode2020/d03-input.txt");
     let mut col: i32 = 0;
-    let line_length: i32 = data[0].len() as i32;
+    let line_length: i32 = (data[0].len() as i32) -1;
     let mut trees:i32 = 0;
     for row in data.iter() {
         if row.chars().nth(col as usize).unwrap() == '#' {trees += 1;}
-        col += 2;
-        col = col % (line_length);
+        col += 3;
+        col = col % (line_length + 1);
 
     }
-    println!("{}", trees);
+    println!("Part 1: trees encounted = {}", trees);
 }
 
 //Start function definitions
