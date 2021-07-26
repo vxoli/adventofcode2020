@@ -56,9 +56,8 @@ fn main() {
         // Part 1: check if count falls into the rage allowed
         if occurrences <= max && occurrences >= min {validpart1 += 1; }
         // Part 2 check if one and only one of the positions in password contains the letter
-        let part2 = password.chars();
         let mut valid: bool = false;
-        for (index, ch) in part2.enumerate() {
+        for (index, ch) in password.chars().enumerate() {
             if ((index + 1) as i32 == min || (index+1) as i32 == max )&& ch == letter {valid = !valid;}
         }
         if valid {validpart2 += 1;}
