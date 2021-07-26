@@ -51,7 +51,6 @@ fn main() {
     for (_index, line) in data.iter().enumerate() {
         // split the string into min, max, letter and pasword
         let (min, max, letter, password) = split_the_line(line);
-        // count occurrences of the letter in the password
         // Part 1: check if count falls into the rage allowed
         if count_part1(letter, password, min, max) {validpart1 += 1; }
         // Part 2 check if one and only one of the positions in password contains the letter
