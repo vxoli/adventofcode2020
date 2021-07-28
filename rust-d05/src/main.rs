@@ -43,6 +43,17 @@ As a sanity check, look through your list of boarding passes. What is the highes
 To begin, get your puzzle input.
 
 Answer:
+
+## --- Part Two ---
+
+Ding! The "fasten seat belt" signs have turned on. Time to find your seat.
+
+It's a completely full flight, so your seat should be the only missing boarding pass in your list. However, there's a catch: some of the seats at the very front and back of the plane don't exist on this aircraft, so they'll be missing from your list as well.
+
+Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list.
+
+What is the ID of your seat?
+
  */
 
 use std::fs;
@@ -50,6 +61,8 @@ use std::fs;
 fn main() {
     let data = read_input_data("/home/christopher/Documents/GitHub/adventofcode2020/d05-input.txt");
     let mut max_seatid: u32 = 0;
+    let mut all_seatid: Vec<u32> = Vec::new();
+    let mut my_seatid: u32 = 0;
     for row in data.iter() {
         let row_code = String::from(&row[..7]);
         let seat_code = String::from(&row[7..]);
@@ -71,8 +84,17 @@ fn main() {
         if seat_id > max_seatid {
             max_seatid = seat_id
         };
+        all_seatid.push(seat_id);
     }
     println!("Part 1: Max seat ID is: {}", max_seatid);
+    all_seatid.sort();
+    for (index, seat) in all_seatid.iter().enumerate() {
+        if all_seatid[index + 1] - seat > 1 {
+            my_seatid = seat + 1;
+            break;
+        };
+    }
+    println!("Part 2: My seat ID is: {}", my_seatid);
 }
 
 // Read input data
