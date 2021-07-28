@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::collections::HashSet;
 use std::fs;
 
@@ -120,7 +121,7 @@ const EYE_COLORS: [&'static str; 7] = ["amb", "blu", "brn", "gry", "grn", "hzl",
 fn main() {
     // Part 1
     println!(
-        "Number of valid passports = {}",
+        "Part 1: Number of valid passports = {}",
         include_str!("/home/christopher/Documents/GitHub/adventofcode2020/d04-input.txt")
             .split("\n\n")
             .map(|fields| {
@@ -137,14 +138,14 @@ fn main() {
     // clean data by removing \n then each passport's data will be on one line and passports seperated by newline
     // Part 2
     println!(
-        "{}",
+        "Part 2: Number of valid passports = {}",
         include_str!("/home/christopher/Documents/GitHub/adventofcode2020/d04-input.txt")
             .split("\n\n")
             .map(|fields| {
                 fields
                     .split_ascii_whitespace()
-                    .map(|field| field.split_once(':').unrwap())
-                    .collect::<HashSet<_>>()
+                    .map(|field| field.split_once(':').unwrap())
+                    .collect::<HashMap<_, _>>()
             })
             .filter(|passport| REQ_FIELDS.iter().all(|item| passport.contains_key(item)))
             .filter(|passport| passport.iter().all(|(f, v)| validate_field(f, v)))
