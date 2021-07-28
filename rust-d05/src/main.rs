@@ -68,7 +68,7 @@ fn main() {
         let seat_code = String::from(&row[7..]);
         let mut row_number: u32 = 0;
         let mut seat_number: u32 = 0;
-        // calculate seat number
+        // calculate row number
         for (index, code) in row_code.chars().enumerate() {
             row_number = row_number
                 + ((code == 'F') as u32 * 0)
