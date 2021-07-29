@@ -70,15 +70,11 @@ fn main() {
         let mut seat_number: u32 = 0;
         // calculate row number
         for (index, code) in row_code.chars().enumerate() {
-            row_number = row_number
-                + ((code == 'F') as u32 * 0)
-                + ((code == 'B') as u32 * 2_u32.pow(6 - index as u32));
+            row_number = row_number + ((code == 'B') as u32 * 2_u32.pow(6 - index as u32));
         }
         // calculate seat number`
         for (index, code) in seat_code.chars().enumerate() {
-            seat_number = seat_number
-                + ((code == 'L') as u32 * 0)
-                + ((code == 'R') as u32 * 2_u32.pow(2 - index as u32));
+            seat_number = seat_number + ((code == 'R') as u32 * 2_u32.pow(2 - index as u32));
         }
         let seat_id = row_number * 8 + seat_number;
         if seat_id > max_seatid {
