@@ -32,10 +32,40 @@ In the above rules, the following options would be available to you:
 How many bag colors can eventually contain at least one shiny gold bag? (The list of rules is quite long; make sure you get all of it.)
 
 */
+use std::fs;
 
 fn main() {
-    println!("{}",
-        include_str!("../../d07-input.txt")
+    let data = read_input_data("../d07-input.txt");
+    // split data into bag and what it contains
+    //let mut my_bags= Vec::new();
+    let mut bags = Vec::<&str>::new();
+    //find bags that can contain "shiny gold" bags
+    for line in data.iter() {
+        let splitline: Vec<&str> = line.split(" contain ").collect();
+        if splitline[1].contains("shiny gold"){
+        bags.push(splitline[0].trim_end_matches(" bags").trim_end_matches(" bag").trim());}
+    }
+    //now find the bags that can contain bags that can contain "shiny gold" bags
+    let mut more_bags = Vec::<&str>::new();
+    for bag_col in bags.iter(){
+        for line in data.iter() {
+            let splitline: Vec<&str> = line.split(" contain ").collect();
+            if splitline[1].contains(bag_col){
+                more_bags.push(splitline[0].trim_end_matches(" bags").trim_end_matches(" bag").trim());
+            }
+        }
+    }
+    println!("{:?} - {}",more_bags, more_bags.len());
+    println!("{:?} - {}", bags, bags.len());
 
-    );
+
+}
+
+fn read_input_data(filename: &str) -> Vec<String> {
+    let input = fs::read_to_string(filename)
+                    .unwrap()
+                    .lines()
+                    .map(|line| line.to_string())
+                    .collect();
+    input
 }
