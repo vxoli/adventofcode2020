@@ -13,6 +13,6 @@ for bag_col in myBags:
 	myBags += [data_clean[s][0][0:len(data_clean[s][0])-6] for s in range(len(data_clean)) if bag_col in data_clean[s][1]]
 
 # remove duplicate bag colours
-myBags = list(dict.fromkeys(myBags))	
+myBags = list(dict.fromkeys(myBags))
 print(myBags)
 print(len(myBags))

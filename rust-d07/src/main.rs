@@ -1,4 +1,4 @@
-/* # Day 7: 
+/* # Day 7:
 ## --- Handy Haversacks ---
 
 You land at the regional airport in time for your next flight. In fact, it looks like you'll even have time to grab some food: all flights are currently delayed due to issues in luggage processing.
@@ -42,30 +42,45 @@ fn main() {
     //find bags that can contain "shiny gold" bags
     for line in data.iter() {
         let splitline: Vec<&str> = line.split(" contain ").collect();
-        if splitline[1].contains("shiny gold"){
-        bags.push(splitline[0].trim_end_matches(" bags").trim_end_matches(" bag").trim());}
+        if splitline[1].contains("shiny gold") {
+            bags.push(
+                splitline[0]
+                    .trim_end_matches("s")
+                    .trim_end_matches("bag")
+                    .trim(),
+            );
+        }
     }
     //now find the bags that can contain bags that can contain "shiny gold" bags
+    // I think I need a while loop to loop over the possibile bag colours, identify more_bags,
+    // update bags with more_bags and repeat till no further bags found.
+    // need to exclude bags already found
+    // if more_bags.iter().any()(|&bag| bag == bag_col) {skip pushing onto vector}
     let mut more_bags = Vec::<&str>::new();
-    for bag_col in bags.iter(){
+    for bag_col in bags.iter() {
         for line in data.iter() {
             let splitline: Vec<&str> = line.split(" contain ").collect();
-            if splitline[1].contains(bag_col){
-                more_bags.push(splitline[0].trim_end_matches(" bags").trim_end_matches(" bag").trim());
+            if splitline[1].contains(bag_col) {
+                more_bags.push(
+                    splitline[0]
+                        .trim_end_matches("s")
+                        .trim_end_matches("bag")
+                        .trim(),
+                );
             }
         }
     }
-    println!("{:?} - {}",more_bags, more_bags.len());
+
+    bags.append(&mut more_bags);
+    println!("{:?} - {}", more_bags, more_bags.len());
     println!("{:?} - {}", bags, bags.len());
-
-
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
     let input = fs::read_to_string(filename)
-                    .unwrap()
-                    .lines()
-                    .map(|line| line.to_string())
-                    .collect();
+        .unwrap()
+        .lines()
+        .map(|line| line.to_string())
+        .collect();
     input
 }
