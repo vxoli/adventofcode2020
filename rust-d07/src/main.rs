@@ -57,23 +57,27 @@ fn main() {
     // need to exclude bags already found
     // if more_bags.iter().any()(|&bag| bag == bag_col) {skip pushing onto vector}
     let mut more_bags = Vec::<&str>::new();
-    for bag_col in bags.iter() {
-        for line in data.iter() {
-            let splitline: Vec<&str> = line.split(" contain ").collect();
-            if splitline[1].contains(bag_col) {
-                more_bags.push(
-                    splitline[0]
-                        .trim_end_matches("s")
-                        .trim_end_matches("bag")
-                        .trim(),
-                );
+    let mut num_new_bags = bags.len();
+    while num_new_bags != 0 {
+        for bag_col in bags.iter() {
+            for line in data.iter() {
+                let splitline: Vec<&str> = line.split(" contain ").collect();
+                if splitline[1].contains(bag_col) && !bags.contains(&splitline[1]) {
+                    more_bags.push(
+                        splitline[0]
+                            .trim_end_matches("s")
+                            .trim_end_matches("bag")
+                            .trim(),
+                    );
+                }
             }
         }
-    }
+        num_new_bags = more_bags.len();
 
-    bags.append(&mut more_bags);
-    println!("{:?} - {}", more_bags, more_bags.len());
-    println!("{:?} - {}", bags, bags.len());
+        bags.append(&mut more_bags);
+        println!("{:?} - {}", more_bags, more_bags.len());
+        println!("{:?} - {}", bags.len(), num_new_bags);
+    }
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
