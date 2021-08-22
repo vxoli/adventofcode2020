@@ -26,8 +26,8 @@
 // - acc +6
 //
 // These instructions are visited in this order:
-//
 // - nop +0  | 1
+//
 // - acc +1  | 2, 8(!)
 // - jmp +4  | 3
 // - acc +3  | 6
@@ -48,6 +48,7 @@
 use std::fs;
 
 fn main() {
+    // Part One
     let data = read_input_data("../d08-input.txt");
     let mut accumulator: i32 = 0;
     let mut code_line: i32 = 0;
@@ -75,7 +76,7 @@ fn main() {
             _ => println!("do nothing"),
         }
     }
-    println!("Immediately before any instruction is executed a second time, what value is in the accumulator? {}", accumulator);
+    println!("Part 1: Immediately before any instruction is executed a second time, what value is in the accumulator? {}", accumulator);
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
