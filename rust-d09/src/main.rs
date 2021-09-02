@@ -45,49 +45,66 @@
 // 309
 // 576
 //
-// In this example, after the 5-number preamble, almost every number is the sum of two of the previous 5 numbers; the only number that does not follow this rule is 127.
+// In this example, after the 5-number preamble, almost every number is the sum of two of the previous
+// 5 numbers; the only number that does not follow this rule is 127.
 //
-// The first step of attacking the weakness in the XMAS data is to find the first number in the list (after the preamble) which is not the sum of two of the 25 numbers before it. What is the first number that does not have this property?
-
+// The first step of attacking the weakness in the XMAS data is to find the first number in the list
+// (after the preamble) which is not the sum of two of the 25 numbers before it. What is the first number that does not have this property?
 
 use std::fs;
 
 fn main() {
     let data = read_input_data("../d09-input.txt");
-    let preamble = 25;
+    let data = [
+        "35", "20", "15", "25", "47", "40", "62", "55", "65", "95", "102", "117", "150", "182",
+        "127", "219", "299", "277", "309", "576",
+    ];
+    let preamble = 5;
     let mut solution: bool = false;
-    let mut index = 0 + preamble - 1;
+    let mut index = 0;
     loop {
-        println!("{} = {} = {}", index, data[index], data[index + preamble]);
+        if index + preamble == data.len() {
+            break;
+        }
+        // println!(
+        //     "{} = {} = {} = {}",
+        //     index,
+        //     data[index],
+        //     data[index + preamble - 1],
+        //     data[index + preamble]
+        // );
+        solution = false;
         'outer: for j in data[index..index + preamble].iter() {
             'inner: for k in data[index..index + preamble].iter() {
-                println!(
-                    "{} == {} == {} == {}",
-                    index,
-                    j,
-                    k,
-                    j.parse::<i32>().unwrap() + k.parse::<i32>().unwrap()
-                        == data[index].parse::<i32>().unwrap()
-                );
+                // println!(
+                //     "{} == {} == {} == {} = {}",
+                //     index,
+                //     j,
+                //     k,
+                //     j.parse::<i32>().unwrap() + k.parse::<i32>().unwrap()
+                //         == data[index + preamble].parse::<i32>().unwrap(),
+                //     solution
+                // );
                 if (j.parse::<i32>().unwrap() + k.parse::<i32>().unwrap()
-                    == data[index].parse::<i32>().unwrap())
-                    && (j.parse::<i32>().unwrap() != k.parse::<i32>().unwrap())
+                    == data[index + preamble].parse::<i32>().unwrap())
+                    && j.parse::<i32>().unwrap() != k.parse::<i32>().unwrap()
                 {
-                    println!("\n{} - {} - {}\n", data[index], j, k);
+                    // println!("\n{} - {} - {}\n", data[index + preamble], j, k);
                     solution = true;
-                    continue 'outer;
+                    break;
                 }
             }
             if solution == true {
-                continue 'outer;
+                break;
             }
         }
-        if solution == true {
-            solution = !solution;
-            index += 1;
+        if solution == false {
+            println!("*** {} ***", data[index + preamble]);
+            break;
         }
+        index += 1;
     }
-    println!("Finished!");
+    println!("Finished! {}", data[index + preamble]);
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
