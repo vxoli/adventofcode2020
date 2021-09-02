@@ -66,30 +66,13 @@ fn main() {
         if index + preamble == data.len() {
             break;
         }
-        // println!(
-        //     "{} = {} = {} = {}",
-        //     index,
-        //     data[index],
-        //     data[index + preamble - 1],
-        //     data[index + preamble]
-        // );
         solution = false;
         'outer: for j in data[index..index + preamble].iter() {
             'inner: for k in data[index..index + preamble].iter() {
-                // println!(
-                //     "{} == {} == {} == {} = {}",
-                //     index,
-                //     j,
-                //     k,
-                //     j.parse::<i32>().unwrap() + k.parse::<i32>().unwrap()
-                //         == data[index + preamble].parse::<i32>().unwrap(),
-                //     solution
-                // );
                 if (j.parse::<i32>().unwrap() + k.parse::<i32>().unwrap()
                     == data[index + preamble].parse::<i32>().unwrap())
                     && j.parse::<i32>().unwrap() != k.parse::<i32>().unwrap()
                 {
-                    // println!("\n{} - {} - {}\n", data[index + preamble], j, k);
                     solution = true;
                     break;
                 }
@@ -99,12 +82,14 @@ fn main() {
             }
         }
         if solution == false {
-            println!("*** {} ***", data[index + preamble]);
             break;
         }
         index += 1;
     }
-    println!("Finished! {}", data[index + preamble]);
+    println!(
+        "What is the first number that is not the sum of two of the preceeding 25? {}",
+        data[index + preamble]
+    );
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
