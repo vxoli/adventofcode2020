@@ -148,11 +148,11 @@ fn main() {
             sum += j.parse::<i32>().unwrap();
             values.push(j.parse::<i32>().unwrap());
             if sum == target_number {
-                println!("{} - {} - {:?}", target_number, sum, values);
                 println!(
-                    "{:?} * {:?} = {:?}",
+                    "Part 2: What is the encryption weakness in your XMAS-encrypted list of numbers? {:?} * {:?} = {:?}",
                     values.iter().min().unwrap(),
-                    values.iter().max().unwrap(),values.iter().min().unwrap() * values.iter().max().unwrap() 
+                    values.iter().max().unwrap(),
+                    values.iter().min().unwrap() * values.iter().max().unwrap()
                 );
                 break;
             }
