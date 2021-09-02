@@ -87,7 +87,7 @@ fn main() {
         index += 1;
     }
     println!(
-        "What is the first number that is not the sum of two of the preceeding 25? {}",
+        "Part 1: What is the first number that is not the sum of two of the preceeding 25? {}",
         data[index + preamble]
     );
 }
