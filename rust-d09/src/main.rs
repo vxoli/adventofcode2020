@@ -55,11 +55,11 @@ use std::fs;
 
 fn main() {
     let data = read_input_data("../d09-input.txt");
-    let data = [
-        "35", "20", "15", "25", "47", "40", "62", "55", "65", "95", "102", "117", "150", "182",
-        "127", "219", "299", "277", "309", "576",
-    ];
-    let preamble = 5;
+    // let data = [
+    //     "35", "20", "15", "25", "47", "40", "62", "55", "65", "95", "102", "117", "150", "182",
+    //     "127", "219", "299", "277", "309", "576",
+    // ]; // this is tet data - set preamble length to 5
+    let preamble = 25;
     let mut solution: bool = false;
     let mut index = 0;
     loop {
