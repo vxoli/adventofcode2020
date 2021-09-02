@@ -22,7 +22,7 @@ for idx, i in enumerate(data[preamble:]):
     if solution == False:
         break
 # i is the value, data.index(i) is the position of i in the list
-# need to loop through the data list to the position of i to find 
+# need to loop through the data list to the position of i to find
 # a combination of two or more numbers that sum to i
 targetNumber = i
 targetIdx = data.index(i)
@@ -41,4 +41,3 @@ for i in range(0,targetIdx):
             break
         if sum > targetNumber:
             break
-
