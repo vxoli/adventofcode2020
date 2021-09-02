@@ -94,11 +94,11 @@ use std::fs;
 
 fn main() {
     let data = read_input_data("../d09-input.txt");
-    let data = [
-        "35", "20", "15", "25", "47", "40", "62", "55", "65", "95", "102", "117", "150", "182",
-        "127", "219", "299", "277", "309", "576",
-    ]; // this is tet data - set preamble length to 5
-    let preamble = 5;
+    // let data = [
+    //     "35", "20", "15", "25", "47", "40", "62", "55", "65", "95", "102", "117", "150", "182",
+    //     "127", "219", "299", "277", "309", "576",
+    // ]; // this is test data - set preamble length to 5
+    let preamble = 25;
     let mut solution: bool = false;
     let mut index = 0;
 
@@ -142,17 +142,17 @@ fn main() {
         let mut sum = 0;
         let mut values = Vec::<i32>::new();
         for j in data[i..target_idx].iter() {
-            if i == j.parse::<usize>().unwrap() {
+            if data[i].parse::<usize>().unwrap() == j.parse::<usize>().unwrap() {
                 continue;
             }
             sum += j.parse::<i32>().unwrap();
             values.push(j.parse::<i32>().unwrap());
             if sum == target_number {
                 println!(
-                    "Part 2: What is the encryption weakness in your XMAS-encrypted list of numbers? {:?} * {:?} = {:?}",
+                    "Part 2: What is the encryption weakness in your XMAS-encrypted list of numbers? {:?} + {:?} = {:?}",
                     values.iter().min().unwrap(),
                     values.iter().max().unwrap(),
-                    values.iter().min().unwrap() * values.iter().max().unwrap()
+                    values.iter().min().unwrap() + values.iter().max().unwrap()
                 );
                 break;
             }
@@ -164,7 +164,6 @@ fn main() {
 }
 
 fn read_input_data(filename: &str) -> Vec<String> {
-    println!("{}", filename);
     let input = fs::read_to_string(filename)
         .unwrap()
         .lines()
