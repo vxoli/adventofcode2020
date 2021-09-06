@@ -124,7 +124,33 @@ fn read_input_as_string(filename: &str) -> Vec<String> {
 
 fn main() {
     let filename = "../d10-input.txt";
-    let data = read_input_as_numbers(filename);
-    println!("{:?}", data);
-    let data: Vec<u32> = vec![16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4];
+    let mut data = read_input_as_numbers(filename);
+    //    let mut data: Vec<u32> = vec![16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4];
+    data.sort();
+    let mut rating = 0;
+    let mut selected_adaptors: Vec<u32> = vec![];
+    let mut differences: Vec<u32> = vec![0, 0, 0, 0];
+
+    for i in data.iter() {
+        let mut possible_adaptors: Vec<u32> = vec![];
+        for j in data.iter() {
+            if selected_adaptors.contains(j) {
+                continue;
+            }
+            if (j - rating) <= 3 {
+                possible_adaptors.push(*j);
+            }
+        }
+        match possible_adaptors.iter().min().unwrap() - rating {
+            1 => differences[1] += 1,
+            2 => differences[2] += 1,
+            3 => differences[3] += 1,
+            _ => println!("something went wrong here"),
+        }
+        rating += possible_adaptors.iter().min().unwrap() - rating;
+        selected_adaptors.push(*possible_adaptors.iter().min().unwrap());
+    }
+    rating += 3;
+    differences[3] += 1;
+    println!("What is the number of 1-jolt differences multiplied by the number of 3-jolt differences? {}", differences[1]*differences[3]);
 }
