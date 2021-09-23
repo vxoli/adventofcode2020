@@ -6,8 +6,8 @@ for i in stringData
     push!(data, parse(Int,i))
 end
 # test data
-data = [16,10,15,5,1,11,7,19,6,12,4]
-# data = [28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,38,39,11,1,32,25,35,8,17,7,9,4,2,34,10,3]
+#data = [16,10,15,5,1,11,7,19,6,12,4]
+#data = [28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,38,39,11,1,32,25,35,8,17,7,9,4,2,34,10,3]
 sort!(data)
 # start solution
 rating = 0
@@ -21,21 +21,17 @@ for i in data
 	possibleAdaptors = []
 	for j in data
 		if j in selectedAdaptors
-			println(j, " Already In selectedAdaptors")
 			continue
         end
-		if (j - rating) <=3 && !((j - rating) < 0)
-			println("pushing ", j)
+		if (j - rating) <=3
 			push!(possibleAdaptors,j)
-			println(possibleAdaptors)
         end
+    end
 	differences[1] += (minimum(possibleAdaptors) - rating) == 1
 	differences[2] += (minimum(possibleAdaptors) - rating) == 2
 	differences[3] += (minimum(possibleAdaptors) - rating) == 3
 	rating += minimum(possibleAdaptors) - rating
-	push!(selectedAdaptors,data[getindex(data,minimum(possibleAdaptors))])
-	println(selectedAdaptors)
-    end
+	push!(selectedAdaptors,minimum(possibleAdaptors))    
 end
     # rating increased by 3
 rating += 3
