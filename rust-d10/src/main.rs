@@ -104,7 +104,6 @@
 
 // Part 2
 
-
 use std::fs;
 
 fn read_input_as_numbers(filename: &str) -> Vec<u32> {
